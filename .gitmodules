@@ -1,0 +1,3 @@
+[submodule "JETGPIO"]
+	path = JETGPIO
+	url = https://github.com/Rubberazer/JETGPIO.git
