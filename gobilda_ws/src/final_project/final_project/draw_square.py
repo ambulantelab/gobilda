@@ -1,15 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-
-'''
-    We're going to implement an open loop controller/FSM to have the turtlebot
-    draw a square on the screen. Below I have commented parts of the code that
-    you need to fill in to make the logic complete.
-'''
-
-# We have to use the geometry_msgs/msg/Twist to control robots
-# Write in here what the correct import should be
+# We have to use the geometry_msgs/msg/TwistStamped to control gobilda
 from geometry_msgs.msg import TwistStamped
 
 class DrawSquare(Node):
