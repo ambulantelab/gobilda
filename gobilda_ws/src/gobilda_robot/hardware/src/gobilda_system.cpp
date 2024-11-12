@@ -170,10 +170,14 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_deactivate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
   RCLCPP_INFO(rclcpp::get_logger("GobildaSystemHardware"), "Deactivating ...please wait...");
+  
   bool success = true;
+  
   for (auto motor : motors_) {
     success = success && motor.trySetVelocity(0);
   }
+  // Add the gpioTerminateFunction to release the memory!!
+
   if (!success) {
     RCLCPP_ERROR(rclcpp::get_logger("GobildaSystemHardware"),
                  "Error setting velocity on motors while deactivating!");
