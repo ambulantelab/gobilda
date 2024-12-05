@@ -22,7 +22,6 @@
   <xacro:gobilda_ros2_control name="Gobilda" prefix="$(arg prefix)" use_mock_hardware="$(arg use_mock_hardware)"/>
 
   <!-- Gobilda sensor definitions -->
-
   <xacro:rplidar name="rplidar" parent_link="base_link" gazebo="$(arg gazebo)">
     <origin xyz="${rplidar_x_offset} ${rplidar_y_offset} ${rplidar_z_offset}"/>
   </xacro:rplidar>
