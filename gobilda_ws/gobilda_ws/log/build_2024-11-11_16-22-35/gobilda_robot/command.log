@@ -1,0 +1,4 @@
+Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot
+Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot

@@ -1,0 +1,4 @@
+[console_scripts]
+draw_square = final_project.draw_square:main
+teleop_gobilda = final_project.teleop_twist_keyboard:main
+

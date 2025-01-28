@@ -1,0 +1,197 @@
+[0.206s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.207s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff7eebc430>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff7f069cc0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff7f069cc0>>, mixin_verb=('build',))
+[0.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.466s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.466s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.466s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.466s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.466s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.466s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/robot/gobilda/gobilda_ws'
+[0.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.467s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extensions ['ignore', 'ignore_ament_install']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extension 'ignore'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extension 'ignore_ament_install'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extensions ['colcon_pkg']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extension 'colcon_pkg'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extensions ['colcon_meta']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extension 'colcon_meta'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extensions ['ros']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(src/final_project) by extension 'ros'
+[0.498s] DEBUG:colcon.colcon_core.package_identification:Package 'src/final_project' with type 'ros.ament_python' and name 'final_project'
+[0.498s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extensions ['ignore', 'ignore_ament_install']
+[0.498s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extension 'ignore'
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extension 'ignore_ament_install'
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extensions ['colcon_pkg']
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extension 'colcon_pkg'
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extensions ['colcon_meta']
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extension 'colcon_meta'
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extensions ['ros']
+[0.499s] Level 1:colcon.colcon_core.package_identification:_identify(src/gobilda_robot) by extension 'ros'
+[0.504s] DEBUG:colcon.colcon_core.package_identification:Package 'src/gobilda_robot' with type 'ros.ament_cmake' and name 'gobilda_robot'
+[0.504s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.504s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.504s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.504s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.504s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.542s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.542s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.544s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_args' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_target' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_clean_cache' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_clean_first' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'cmake_force_configure' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'ament_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'catkin_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'final_project' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.547s] DEBUG:colcon.colcon_core.verb:Building package 'final_project' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot/gobilda/gobilda_ws/build/final_project', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot/gobilda/gobilda_ws/install/final_project', 'merge_install': False, 'path': '/home/robot/gobilda/gobilda_ws/src/final_project', 'symlink_install': False, 'test_result_base': None}
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_args' from command line to 'None'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_target' from command line to 'None'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_clean_cache' from command line to 'False'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_clean_first' from command line to 'False'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'cmake_force_configure' from command line to 'False'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'ament_cmake_args' from command line to 'None'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'catkin_cmake_args' from command line to 'None'
+[0.548s] Level 5:colcon.colcon_core.verb:set package 'gobilda_robot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.548s] DEBUG:colcon.colcon_core.verb:Building package 'gobilda_robot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot/gobilda/gobilda_ws/build/gobilda_robot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot/gobilda/gobilda_ws/install/gobilda_robot', 'merge_install': False, 'path': '/home/robot/gobilda/gobilda_ws/src/gobilda_robot', 'symlink_install': False, 'test_result_base': None}
+[0.548s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.550s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.551s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/robot/gobilda/gobilda_ws/src/final_project' with build type 'ament_python'
+[0.551s] Level 1:colcon.colcon_core.shell:create_environment_hook('final_project', 'ament_prefix_path')
+[0.555s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.555s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/ament_prefix_path.ps1'
+[0.557s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/ament_prefix_path.dsv'
+[0.558s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/ament_prefix_path.sh'
+[0.559s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.559s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.562s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/robot/gobilda/gobilda_ws/src/gobilda_robot' with build type 'ament_cmake'
+[0.562s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/robot/gobilda/gobilda_ws/src/gobilda_robot'
+[0.563s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.563s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.992s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/robot/gobilda/gobilda_ws/src/final_project'
+[0.992s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.993s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.007s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+[1.147s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+[1.215s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot
+[1.239s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gobilda_robot)
+[1.240s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot
+[1.248s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot' for CMake module files
+[1.250s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot' for CMake config files
+[1.251s] Level 1:colcon.colcon_core.shell:create_environment_hook('gobilda_robot', 'cmake_prefix_path')
+[1.251s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.ps1'
+[1.254s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.dsv'
+[1.255s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.sh'
+[1.258s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib'
+[1.258s] Level 1:colcon.colcon_core.shell:create_environment_hook('gobilda_robot', 'ld_library_path_lib')
+[1.259s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.ps1'
+[1.260s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.dsv'
+[1.262s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.sh'
+[1.263s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/bin'
+[1.263s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/pkgconfig/gobilda_robot.pc'
+[1.264s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/python3.10/site-packages'
+[1.265s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/bin'
+[1.266s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.ps1'
+[1.269s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.dsv'
+[1.271s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.sh'
+[1.274s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.bash'
+[1.277s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.zsh'
+[1.279s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/colcon-core/packages/gobilda_robot)
+[1.328s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gobilda_robot)
+[1.328s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot' for CMake module files
+[1.330s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot' for CMake config files
+[1.331s] Level 1:colcon.colcon_core.shell:create_environment_hook('gobilda_robot', 'cmake_prefix_path')
+[1.331s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.ps1'
+[1.333s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.dsv'
+[1.334s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/cmake_prefix_path.sh'
+[1.336s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib'
+[1.337s] Level 1:colcon.colcon_core.shell:create_environment_hook('gobilda_robot', 'ld_library_path_lib')
+[1.337s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.ps1'
+[1.339s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.dsv'
+[1.340s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/hook/ld_library_path_lib.sh'
+[1.342s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/bin'
+[1.342s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/pkgconfig/gobilda_robot.pc'
+[1.343s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/python3.10/site-packages'
+[1.344s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/bin'
+[1.345s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.ps1'
+[1.347s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.dsv'
+[1.349s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.sh'
+[1.350s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.bash'
+[1.352s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.zsh'
+[1.354s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/colcon-core/packages/gobilda_robot)
+[1.662s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot/gobilda/gobilda_ws/src/final_project': PYTHONPATH=/home/robot/gobilda/gobilda_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/robot/gobilda/gobilda_ws/build/final_project/build install --record /home/robot/gobilda/gobilda_ws/build/final_project/install.log --single-version-externally-managed install_data
+[2.175s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project' for CMake module files
+[2.176s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot/gobilda/gobilda_ws/src/final_project' returned '0': PYTHONPATH=/home/robot/gobilda/gobilda_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/robot/gobilda/gobilda_ws/build/final_project/build install --record /home/robot/gobilda/gobilda_ws/build/final_project/install.log --single-version-externally-managed install_data
+[2.177s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project' for CMake config files
+[2.179s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project/lib'
+[2.180s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project/bin'
+[2.180s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project/lib/pkgconfig/final_project.pc'
+[2.181s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages'
+[2.181s] Level 1:colcon.colcon_core.shell:create_environment_hook('final_project', 'pythonpath')
+[2.182s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/pythonpath.ps1'
+[2.184s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/pythonpath.dsv'
+[2.185s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/hook/pythonpath.sh'
+[2.187s] Level 1:colcon.colcon_core.environment:checking '/home/robot/gobilda/gobilda_ws/install/final_project/bin'
+[2.187s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(final_project)
+[2.188s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/package.ps1'
+[2.190s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/package.dsv'
+[2.192s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/package.sh'
+[2.193s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/package.bash'
+[2.195s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/gobilda/gobilda_ws/install/final_project/share/final_project/package.zsh'
+[2.196s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot/gobilda/gobilda_ws/install/final_project/share/colcon-core/packages/final_project)
+[2.197s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.198s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.198s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.198s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.218s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.218s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.218s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.251s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.253s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/gobilda/gobilda_ws/install/local_setup.ps1'
+[2.256s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/gobilda/gobilda_ws/install/_local_setup_util_ps1.py'
+[2.262s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/gobilda/gobilda_ws/install/setup.ps1'
+[2.264s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/gobilda/gobilda_ws/install/local_setup.sh'
+[2.266s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/gobilda/gobilda_ws/install/_local_setup_util_sh.py'
+[2.304s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/gobilda/gobilda_ws/install/setup.sh'
+[2.307s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/gobilda/gobilda_ws/install/local_setup.bash'
+[2.309s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/gobilda/gobilda_ws/install/setup.bash'
+[2.311s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/gobilda/gobilda_ws/install/local_setup.zsh'
+[2.312s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/gobilda/gobilda_ws/install/setup.zsh'

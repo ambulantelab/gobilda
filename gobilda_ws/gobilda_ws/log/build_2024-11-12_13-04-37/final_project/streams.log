@@ -1,0 +1,33 @@
+[1.427s] Invoking command in '/home/robot/gobilda/gobilda_ws/src/final_project': PYTHONPATH=/home/robot/gobilda/gobilda_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/robot/gobilda/gobilda_ws/build/final_project/build install --record /home/robot/gobilda/gobilda_ws/build/final_project/install.log --single-version-externally-managed install_data
+[1.914s] running egg_info
+[1.916s] writing ../../build/final_project/final_project.egg-info/PKG-INFO
+[1.916s] writing dependency_links to ../../build/final_project/final_project.egg-info/dependency_links.txt
+[1.917s] writing entry points to ../../build/final_project/final_project.egg-info/entry_points.txt
+[1.917s] writing requirements to ../../build/final_project/final_project.egg-info/requires.txt
+[1.917s] writing top-level names to ../../build/final_project/final_project.egg-info/top_level.txt
+[1.921s] reading manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[1.923s] writing manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[1.923s] running build
+[1.923s] running build_py
+[1.924s] copying final_project/__init__.py -> /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project
+[1.925s] copying final_project/teleop_twist_keyboard.py -> /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project
+[1.925s] copying final_project/draw_square.py -> /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project
+[1.925s] running install
+[1.926s] running install_lib
+[1.928s] copying /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project/__init__.py -> /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project
+[1.928s] copying /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project/teleop_twist_keyboard.py -> /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project
+[1.928s] copying /home/robot/gobilda/gobilda_ws/build/final_project/build/lib/final_project/draw_square.py -> /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project
+[1.930s] byte-compiling /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project/__init__.py to __init__.cpython-310.pyc
+[1.930s] byte-compiling /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project/teleop_twist_keyboard.py to teleop_twist_keyboard.cpython-310.pyc
+[1.933s] byte-compiling /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project/draw_square.py to draw_square.cpython-310.pyc
+[1.935s] running install_data
+[1.935s] copying resource/final_project -> /home/robot/gobilda/gobilda_ws/install/final_project/share/ament_index/resource_index/packages
+[1.936s] copying package.xml -> /home/robot/gobilda/gobilda_ws/install/final_project/share/final_project
+[1.936s] running install_egg_info
+[1.939s] removing '/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info' (and everything under it)
+[1.940s] Copying ../../build/final_project/final_project.egg-info to /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info
+[1.942s] running install_scripts
+[1.986s] Installing draw_square script to /home/robot/gobilda/gobilda_ws/install/final_project/lib/final_project
+[1.986s] Installing teleop_gobilda script to /home/robot/gobilda/gobilda_ws/install/final_project/lib/final_project
+[1.987s] writing list of installed files to '/home/robot/gobilda/gobilda_ws/build/final_project/install.log'
+[2.055s] Invoked command in '/home/robot/gobilda/gobilda_ws/src/final_project' returned '0': PYTHONPATH=/home/robot/gobilda/gobilda_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/robot/gobilda/gobilda_ws/build/final_project/build install --record /home/robot/gobilda/gobilda_ws/build/final_project/install.log --single-version-externally-managed install_data

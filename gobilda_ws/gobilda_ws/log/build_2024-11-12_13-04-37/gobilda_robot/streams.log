@@ -1,0 +1,65 @@
+[0.624s] Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+[0.684s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.963s] -- Found hardware_interface: 2.43.1 (/opt/ros/humble/share/hardware_interface/cmake)
+[1.020s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.025s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.038s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.060s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.087s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.445s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.448s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.491s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.509s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.540s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.556s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.575s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.823s] -- Configuring done
+[1.916s] -- Generating done
+[1.921s] -- Build files have been written to: /home/robot/gobilda/gobilda_ws/build/gobilda_robot
+[1.986s] [35m[1mConsolidate compiler generated dependencies of target gobilda_robot[0m
+[2.046s] [ 66%] [32mBuilding CXX object CMakeFiles/gobilda_robot.dir/hardware/src/gobilda_system.cpp.o[0m
+[2.047s] [ 66%] [32mBuilding CXX object CMakeFiles/gobilda_robot.dir/hardware/src/motor.cpp.o[0m
+[11.721s] [100%] [32m[1mLinking CXX shared library libgobilda_robot.so[0m
+[12.097s] [100%] Built target gobilda_robot
+[12.120s] Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
+[12.198s] Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot
+[12.215s] -- Install configuration: ""
+[12.215s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/gobilda_robot.xml
+[12.216s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot
+[12.217s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot
+[12.217s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot/gobilda_system.hpp
+[12.217s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot/motor.hpp
+[12.218s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/ros2_control
+[12.218s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/ros2_control/gobilda.ros2_control.xacro
+[12.218s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf
+[12.219s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf/gobilda.urdf.xacro
+[12.219s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf/gobilda_description.urdf.xacro
+[12.219s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/launch
+[12.219s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/launch/gobilda.launch.py
+[12.220s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/config
+[12.220s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/config/gobilda_controllers.yaml
+[12.220s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/libgobilda_robot.so
+[12.222s] -- Set runtime path of "/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/libgobilda_robot.so" to ""
+[12.222s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/library_path.sh
+[12.223s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/library_path.dsv
+[12.223s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/package_run_dependencies/gobilda_robot
+[12.223s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/parent_prefix_path/gobilda_robot
+[12.224s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/ament_prefix_path.sh
+[12.224s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/ament_prefix_path.dsv
+[12.224s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/path.sh
+[12.225s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/path.dsv
+[12.225s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.bash
+[12.225s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.sh
+[12.225s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.zsh
+[12.226s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.dsv
+[12.226s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.dsv
+[12.226s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/packages/gobilda_robot
+[12.227s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/gobilda_robot
+[12.227s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/export_gobilda_robotExport.cmake
+[12.227s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/export_gobilda_robotExport-noconfig.cmake
+[12.227s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/ament_cmake_export_targets-extras.cmake
+[12.228s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/ament_cmake_export_dependencies-extras.cmake
+[12.228s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/gobilda_robotConfig.cmake
+[12.228s] -- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/gobilda_robotConfig-version.cmake
+[12.228s] -- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.xml
+[12.232s] Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/robot/gobilda/gobilda_ws/build/gobilda_robot

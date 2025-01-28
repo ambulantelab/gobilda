@@ -1,0 +1,158 @@
+[0.000000] (-) TimerEvent: {}
+[0.001216] (final_project) JobQueued: {'identifier': 'final_project', 'dependencies': OrderedDict()}
+[0.001531] (gobilda_robot) JobQueued: {'identifier': 'gobilda_robot', 'dependencies': OrderedDict()}
+[0.001789] (final_project) JobStarted: {'identifier': 'final_project'}
+[0.012110] (gobilda_robot) JobStarted: {'identifier': 'gobilda_robot'}
+[0.099531] (-) TimerEvent: {}
+[0.200127] (-) TimerEvent: {}
+[0.300622] (-) TimerEvent: {}
+[0.401264] (-) TimerEvent: {}
+[0.443344] (gobilda_robot) JobProgress: {'identifier': 'gobilda_robot', 'progress': 'cmake'}
+[0.446859] (gobilda_robot) JobProgress: {'identifier': 'gobilda_robot', 'progress': 'build'}
+[0.447116] (gobilda_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/robot/gobilda/gobilda_ws/build/gobilda_robot', '--', '-j6', '-l6'], 'cwd': '/home/robot/gobilda/gobilda_ws/build/gobilda_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot'), ('SSH_CLIENT', '10.42.0.48 61108 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.2/lib64:'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot'), ('OLDPWD', '/home/robot'), ('SSH_TTY', '/dev/pts/2'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('LOGNAME', 'robot'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '6'), ('PATH', '/usr/local/cuda-12.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/robot/gobilda/gobilda_ws/build/gobilda_robot'), ('SSH_CONNECTION', '10.42.0.48 61108 10.42.0.1 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('COLCON', '1')]), 'shell': False}
+[0.501456] (-) TimerEvent: {}
+[0.536957] (gobilda_robot) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gobilda_robot\x1b[0m\n'}
+[0.580767] (gobilda_robot) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/gobilda_robot.dir/hardware/src/motor.cpp.o\x1b[0m\n'}
+[0.601610] (-) TimerEvent: {}
+[0.702187] (-) TimerEvent: {}
+[0.802711] (-) TimerEvent: {}
+[0.903286] (-) TimerEvent: {}
+[1.003753] (-) TimerEvent: {}
+[1.101534] (final_project) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/final_project', 'build', '--build-base', '/home/robot/gobilda/gobilda_ws/build/final_project/build', 'install', '--record', '/home/robot/gobilda/gobilda_ws/build/final_project/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/robot/gobilda/gobilda_ws/src/final_project', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'robot', 'SSH_CLIENT': '10.42.0.48 61108 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/local/cuda-12.2/lib64:', 'MOTD_SHOWN': 'pam', 'HOME': '/home/robot', 'OLDPWD': '/home/robot', 'SSH_TTY': '/dev/pts/2', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'LOGNAME': 'robot', '_': '/usr/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '6', 'PATH': '/usr/local/cuda-12.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/home/robot/gobilda/gobilda_ws/build/final_project', 'SSH_CONNECTION': '10.42.0.48 61108 10.42.0.1 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'COLCON': '1', 'PYTHONPATH': '/home/robot/gobilda/gobilda_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages:'}, 'shell': False}
+[1.106188] (-) TimerEvent: {}
+[1.206585] (-) TimerEvent: {}
+[1.307070] (-) TimerEvent: {}
+[1.407659] (-) TimerEvent: {}
+[1.494076] (final_project) StdoutLine: {'line': b'running egg_info\n'}
+[1.495302] (final_project) StdoutLine: {'line': b'writing ../../build/final_project/final_project.egg-info/PKG-INFO\n'}
+[1.495834] (final_project) StdoutLine: {'line': b'writing dependency_links to ../../build/final_project/final_project.egg-info/dependency_links.txt\n'}
+[1.496154] (final_project) StdoutLine: {'line': b'writing entry points to ../../build/final_project/final_project.egg-info/entry_points.txt\n'}
+[1.496399] (final_project) StdoutLine: {'line': b'writing requirements to ../../build/final_project/final_project.egg-info/requires.txt\n'}
+[1.496576] (final_project) StdoutLine: {'line': b'writing top-level names to ../../build/final_project/final_project.egg-info/top_level.txt\n'}
+[1.499808] (final_project) StdoutLine: {'line': b"reading manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'\n"}
+[1.501406] (final_project) StdoutLine: {'line': b"writing manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'\n"}
+[1.501647] (final_project) StdoutLine: {'line': b'running build\n'}
+[1.501788] (final_project) StdoutLine: {'line': b'running build_py\n'}
+[1.502473] (final_project) StdoutLine: {'line': b'running install\n'}
+[1.503394] (final_project) StdoutLine: {'line': b'running install_lib\n'}
+[1.505577] (final_project) StdoutLine: {'line': b'running install_data\n'}
+[1.505722] (final_project) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.507717] (-) TimerEvent: {}
+[1.508867] (final_project) StdoutLine: {'line': b"removing '/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[1.509523] (final_project) StdoutLine: {'line': b'Copying ../../build/final_project/final_project.egg-info to /home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info\n'}
+[1.511417] (final_project) StdoutLine: {'line': b'running install_scripts\n'}
+[1.551523] (final_project) StdoutLine: {'line': b'Installing teleop_gobilda script to /home/robot/gobilda/gobilda_ws/install/final_project/lib/final_project\n'}
+[1.552414] (final_project) StdoutLine: {'line': b"writing list of installed files to '/home/robot/gobilda/gobilda_ws/build/final_project/install.log'\n"}
+[1.607856] (-) TimerEvent: {}
+[1.616525] (final_project) CommandEnded: {'returncode': 0}
+[1.652345] (final_project) JobEnded: {'identifier': 'final_project', 'rc': 0}
+[1.707952] (-) TimerEvent: {}
+[1.808386] (-) TimerEvent: {}
+[1.908826] (-) TimerEvent: {}
+[2.009212] (-) TimerEvent: {}
+[2.109553] (-) TimerEvent: {}
+[2.209910] (-) TimerEvent: {}
+[2.310385] (-) TimerEvent: {}
+[2.410924] (-) TimerEvent: {}
+[2.511377] (-) TimerEvent: {}
+[2.611767] (-) TimerEvent: {}
+[2.712144] (-) TimerEvent: {}
+[2.812517] (-) TimerEvent: {}
+[2.912918] (-) TimerEvent: {}
+[3.013231] (-) TimerEvent: {}
+[3.113547] (-) TimerEvent: {}
+[3.213848] (-) TimerEvent: {}
+[3.314149] (-) TimerEvent: {}
+[3.414549] (-) TimerEvent: {}
+[3.515173] (-) TimerEvent: {}
+[3.615607] (-) TimerEvent: {}
+[3.715976] (-) TimerEvent: {}
+[3.816343] (-) TimerEvent: {}
+[3.916746] (-) TimerEvent: {}
+[4.017081] (-) TimerEvent: {}
+[4.117420] (-) TimerEvent: {}
+[4.217719] (-) TimerEvent: {}
+[4.318013] (-) TimerEvent: {}
+[4.418373] (-) TimerEvent: {}
+[4.518928] (-) TimerEvent: {}
+[4.619441] (-) TimerEvent: {}
+[4.719827] (-) TimerEvent: {}
+[4.820203] (-) TimerEvent: {}
+[4.920601] (-) TimerEvent: {}
+[5.020943] (-) TimerEvent: {}
+[5.121233] (-) TimerEvent: {}
+[5.221539] (-) TimerEvent: {}
+[5.321833] (-) TimerEvent: {}
+[5.422190] (-) TimerEvent: {}
+[5.522703] (-) TimerEvent: {}
+[5.623109] (-) TimerEvent: {}
+[5.723458] (-) TimerEvent: {}
+[5.823776] (-) TimerEvent: {}
+[5.924100] (-) TimerEvent: {}
+[6.024414] (-) TimerEvent: {}
+[6.124714] (-) TimerEvent: {}
+[6.225010] (-) TimerEvent: {}
+[6.325338] (-) TimerEvent: {}
+[6.425694] (-) TimerEvent: {}
+[6.526189] (-) TimerEvent: {}
+[6.626597] (-) TimerEvent: {}
+[6.726959] (-) TimerEvent: {}
+[6.827324] (-) TimerEvent: {}
+[6.927711] (-) TimerEvent: {}
+[7.028047] (-) TimerEvent: {}
+[7.128368] (-) TimerEvent: {}
+[7.228670] (-) TimerEvent: {}
+[7.329047] (-) TimerEvent: {}
+[7.380336] (gobilda_robot) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library libgobilda_robot.so\x1b[0m\n'}
+[7.429510] (-) TimerEvent: {}
+[7.530212] (-) TimerEvent: {}
+[7.630785] (-) TimerEvent: {}
+[7.728360] (gobilda_robot) StdoutLine: {'line': b'[100%] Built target gobilda_robot\n'}
+[7.730886] (-) TimerEvent: {}
+[7.752125] (gobilda_robot) CommandEnded: {'returncode': 0}
+[7.797660] (gobilda_robot) JobProgress: {'identifier': 'gobilda_robot', 'progress': 'install'}
+[7.816549] (gobilda_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/robot/gobilda/gobilda_ws/build/gobilda_robot'], 'cwd': '/home/robot/gobilda/gobilda_ws/build/gobilda_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot'), ('SSH_CLIENT', '10.42.0.48 61108 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.2/lib64:'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot'), ('OLDPWD', '/home/robot'), ('SSH_TTY', '/dev/pts/2'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('LOGNAME', 'robot'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '6'), ('PATH', '/usr/local/cuda-12.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/robot/gobilda/gobilda_ws/build/gobilda_robot'), ('SSH_CONNECTION', '10.42.0.48 61108 10.42.0.1 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('COLCON', '1')]), 'shell': False}
+[7.831014] (-) TimerEvent: {}
+[7.835691] (gobilda_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.836375] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/gobilda_robot.xml\n'}
+[7.836597] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot\n'}
+[7.836926] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot\n'}
+[7.837105] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot/gobilda_system.hpp\n'}
+[7.837434] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/include/gobilda_robot/gobilda_robot/motor.hpp\n'}
+[7.837614] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/ros2_control\n'}
+[7.837776] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/ros2_control/gobilda.ros2_control.xacro\n'}
+[7.837933] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf\n'}
+[7.838084] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf/gobilda.urdf.xacro\n'}
+[7.838232] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/urdf/gobilda_description.urdf.xacro\n'}
+[7.838410] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/launch\n'}
+[7.838559] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/launch/gobilda.launch.py\n'}
+[7.838706] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/config\n'}
+[7.838849] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/config/gobilda_controllers.yaml\n'}
+[7.838996] (gobilda_robot) StdoutLine: {'line': b'-- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/libgobilda_robot.so\n'}
+[7.840116] (gobilda_robot) StdoutLine: {'line': b'-- Set runtime path of "/home/robot/gobilda/gobilda_ws/install/gobilda_robot/lib/libgobilda_robot.so" to ""\n'}
+[7.840393] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/library_path.sh\n'}
+[7.840551] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/library_path.dsv\n'}
+[7.840704] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/package_run_dependencies/gobilda_robot\n'}
+[7.840876] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/parent_prefix_path/gobilda_robot\n'}
+[7.841360] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/ament_prefix_path.sh\n'}
+[7.841538] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/ament_prefix_path.dsv\n'}
+[7.841691] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/path.sh\n'}
+[7.841841] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/environment/path.dsv\n'}
+[7.842081] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.bash\n'}
+[7.842273] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.sh\n'}
+[7.842524] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.zsh\n'}
+[7.842850] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/local_setup.dsv\n'}
+[7.843019] (gobilda_robot) StdoutLine: {'line': b'-- Installing: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.dsv\n'}
+[7.843167] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/packages/gobilda_robot\n'}
+[7.843305] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/gobilda_robot\n'}
+[7.843442] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/export_gobilda_robotExport.cmake\n'}
+[7.843577] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/export_gobilda_robotExport-noconfig.cmake\n'}
+[7.843712] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[7.843894] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[7.844033] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/gobilda_robotConfig.cmake\n'}
+[7.844169] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/cmake/gobilda_robotConfig-version.cmake\n'}
+[7.844303] (gobilda_robot) StdoutLine: {'line': b'-- Up-to-date: /home/robot/gobilda/gobilda_ws/install/gobilda_robot/share/gobilda_robot/package.xml\n'}
+[7.846342] (gobilda_robot) CommandEnded: {'returncode': 0}
+[7.931253] (-) TimerEvent: {}
+[7.950587] (gobilda_robot) JobEnded: {'identifier': 'gobilda_robot', 'rc': 0}
+[7.952816] (-) EventReactorShutdown: {}

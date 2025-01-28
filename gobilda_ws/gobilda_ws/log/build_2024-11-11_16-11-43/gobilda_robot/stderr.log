@@ -1,0 +1,7 @@
+[01m[K/home/robot/gobilda/gobilda_ws/src/gobilda_robot/hardware/src/motor.cpp:[m[K In member function ‘[01m[Kint gobilda_robot::Motor::convertVelocity(double)[m[K’:
+[01m[K/home/robot/gobilda/gobilda_ws/src/gobilda_robot/hardware/src/motor.cpp:40:3:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kelse[m[K’ clause does not guard... [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmisleading-indentation-Wmisleading-indentation]8;;[m[K]
+   40 |   [01;35m[Kelse[m[K rosMax = 60.0; rosMin = -60.0;
+      |   [01;35m[K^~~~[m[K
+[01m[K/home/robot/gobilda/gobilda_ws/src/gobilda_robot/hardware/src/motor.cpp:40:23:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kelse[m[K’
+   40 |   else rosMax = 60.0; [01;36m[KrosMin[m[K = -60.0;
+      |                       [01;36m[K^~~~~~[m[K
