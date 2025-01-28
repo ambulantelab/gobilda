@@ -1,5 +1,0 @@
-  File "/home/robot/gobilda/gobilda_ws/install/final_project/lib/python3.10/site-packages/final_project/draw_square.py", line 13
-    from geometry_msgs.msg TwistStamped
-                           ^^^^^^^^^^^^
-SyntaxError: invalid syntax
-

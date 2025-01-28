@@ -1,2 +1,0 @@
-Invoking command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
-Invoked command in '/home/robot/gobilda/gobilda_ws/build/gobilda_robot' returned '2': /usr/bin/cmake --build /home/robot/gobilda/gobilda_ws/build/gobilda_robot -- -j6 -l6
