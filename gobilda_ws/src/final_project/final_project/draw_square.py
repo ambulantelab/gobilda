@@ -28,13 +28,13 @@ class DrawSquare(Node):
         self.turning = False
 
         self.forward_msg = TwistStamped()
-        self.forward_msg.twist.linear.x = 0.5
+        self.forward_msg.twist.linear.x = 1.0
 
         # What if I want the robot to turn 90 degrees?
         # Along which axis?
         # (Note that values are in rad/s)
         self.turn_msg = TwistStamped()
-        self.turn_msg.twist.angular.z = 1.570743
+        self.turn_msg.twist.angular.z = 3.14
 
     # Callback for the events
     def timer_callback(self):
@@ -48,7 +48,7 @@ class DrawSquare(Node):
             self.publisher_.publish(self.forward_msg)
         
         # Flip the mode of the robot
-        self.turning = not self.turning
+        # self.turning = not self.turning
 
 
 def main(args=None):

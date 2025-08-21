@@ -49,8 +49,8 @@ private:
   std::vector<double> hw_positions_;
   std::vector<double> hw_velocities_;
   std::vector<Motor> motors_;
-  // Code assumes that Right motor is on pin 15
-  // and Left motor is on pin 32
+  // Code assumes that Right motor is on pin 32
+  // and Left motor is on pin 15
   std::vector<int> pins_ = {15, 32};
 };
 

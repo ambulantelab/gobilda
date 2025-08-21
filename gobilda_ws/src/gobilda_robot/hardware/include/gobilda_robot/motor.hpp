@@ -15,8 +15,7 @@ class Motor {
         Motor() = default;
         Motor(int pin, std::string name);
         ~Motor();
-        int convertVelocity(double velocity);
-        bool trySetVelocity(double velocity);
+        bool trySetVelocity(int velocity);
 
     private:
         int pin_;

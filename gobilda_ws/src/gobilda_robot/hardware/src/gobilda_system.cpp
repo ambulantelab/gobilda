@@ -199,11 +199,11 @@ hardware_interface::return_type GobildaSystemHardware::read(
     // Update the joint status: this is a revolute joint without any limit.
     // Simply integrates
     hw_positions_[i] = hw_positions_[i] + period.seconds() * hw_velocities_[i];
-
-    RCLCPP_INFO(
+    /*
+    RCLCPP_INFO(  
       rclcpp::get_logger("GobildaSystemHardware"),
       "Got position state %.5f and velocity state %.5f for '%s'!", hw_positions_[i],
-      hw_velocities_[i], info_.joints[i].name.c_str());
+      hw_velocities_[i], info_.joints[i].name.c_str());*/
   }
 
   return hardware_interface::return_type::OK;
@@ -215,11 +215,37 @@ hardware_interface::return_type gobilda_robot ::GobildaSystemHardware::write(
   bool success = true;
 
   for (auto i = 0u; i < hw_commands_.size(); i++) {
+    /*
     RCLCPP_INFO(
       rclcpp::get_logger("GobildaSystemHardware"),
       "Sending command %.2f to Motor %d", hw_commands_[i], i
-    );
-    success = success && motors_[i].trySetVelocity(hw_commands_[i]);
+    ); */
+    // ##### CRITICAL: MIRROR THE COMMAND FOR ONE MOTOR #####
+    std::string joint_name = info_.joints[i].name;
+    
+    // Check which joint we are commanding and apply a sign factor
+    double sign = 1.0; // Default sign (positive)
+    if (joint_name == "left_wheel_joint") sign = -1.0;
+
+    // MAP the -100 to 100 effort range to the 1050 to 1950 microsecond range.
+    // This is the core conversion for your hardware.
+    //    
+    //  Linear mapping formula:
+    //  pulse_width = 1500 + (effort_command * 4.5)
+    //
+    //  How it works:
+    //  This was acutally tuned so that the robot follows the suggested speed of 0.5m/s
+    //  NOTE: Turning odom is stil very bad!
+    //  -100 effort -> 1500 + (-100 * 4.5) = 1500 - 450 = 1050 us (Full Reverse)
+    //   0 effort -> 1500 + (   0 * 4.5) = 1500 +   0 = 1500 us (Stop)
+    //  100 effort -> 1500 + ( 100 * 4.5) = 1500 + 450 = 1950 us (Full Forward)
+    double effort_command = hw_commands_[i] * sign;
+    int pulse_width_us = 1500 + static_cast<int>(effort_command * 25);
+    /*RCLCPP_INFO(
+      rclcpp::get_logger("GobildaSystemHardware"),
+      "Sending pulse %.2f to Motor %d", hw_commands_[i], pulse_width_us
+    );*/
+    success = success && motors_[i].trySetVelocity(pulse_width_us);
   }
   
   if (!success) {
