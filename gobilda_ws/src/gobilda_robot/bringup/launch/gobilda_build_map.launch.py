@@ -36,6 +36,17 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
+            'slam_params_file',
+            default_value=PathJoinSubstitution([
+                    FindPackageShare('gobilda_robot'),
+                    'config',
+                    'mapper_params_online_async.yaml',
+                ])
+        )
+    )
+
+    declared_arguments.append(
+        DeclareLaunchArgument(
             'oakd_params_file',
             default_value=PathJoinSubstitution([
                     FindPackageShare('gobilda_robot'),
@@ -49,6 +60,7 @@ def generate_launch_description():
     # Initialize Arguments
     use_mock_hardware = LaunchConfiguration('use_mock_hardware')
     laser_frame_id = LaunchConfiguration('frame_id')
+    slam_params_file = LaunchConfiguration('slam_params_file')
     oakd_params_file = LaunchConfiguration('oakd_params_file')
     
     # Grab the FoxGlove launch file
@@ -134,6 +146,24 @@ def generate_launch_description():
             }.items()
     )
 
+    # Configure the slam_toolbox nodes and start mapping!
+    slam_toolbox = IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([
+                PathJoinSubstitution([
+                    FindPackageShare('slam_toolbox'),
+                    'launch',
+                    'online_async_launch.py',
+                ])
+            ]),
+
+            launch_arguments={
+                'auto_start': 'true',
+                'use_lifecycle_manager': 'false',
+                'use_sim_time': 'false',
+                'slam_params_file': slam_params_file,
+            }.items()
+    )
+
     # Get URDF via xacro
     robot_description_content = Command(
         [
@@ -167,7 +197,7 @@ def generate_launch_description():
             ('/gobilda_base_controller/cmd_vel', '/gobilda/cmd_vel'),
         ],
         # uncomment for debugging
-        arguments=[ '--ros-args', '--log-level', 'debug', ],
+        # arguments=[ '--ros-args', '--log-level', 'debug', ],
     )
     robot_state_pub_node = Node(
         package='robot_state_publisher',
@@ -207,4 +237,4 @@ def generate_launch_description():
     ]
     
     # Ordering here has some effects on the startup timing of the nodes
-    return LaunchDescription(declared_arguments + [foxglove] + launch_files + nodes)
+    return LaunchDescription(declared_arguments + [foxglove] + launch_files + nodes + [slam_toolbox])

@@ -22,15 +22,6 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_init(
   {
     return hardware_interface::CallbackReturn::ERROR;
   }
-
-  int init = gpioInitialise();
-  if (init < 0)
-  {
-    RCLCPP_ERROR(
-      rclcpp::get_logger("GobildaSystemHardware"),
-      "ERROR on init!"
-    );
-  }
   
   else
   {
@@ -45,11 +36,19 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_init(
   hw_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
 
   for (auto i = 0u; i < info_.joints.size(); i++) {
-    motors_.emplace_back(Motor(pins_[i], "Motor"));
-    RCLCPP_INFO(
-      rclcpp::get_logger("GobildaSystemHardware"),
-      "Set motor to pin %d", pins_[i] 
-    );
+     try {
+        motors_.emplace_back(std::make_unique<Motor>(pwm_chip_numbers_[i], 0));
+        RCLCPP_INFO(
+          rclcpp::get_logger("GobildaSystemHardware"),
+          "Set motor to pwm chip: %d", pwm_chip_numbers_[i] 
+        );
+    } catch (const std::exception& e) {
+        RCLCPP_ERROR(
+          rclcpp::get_logger("GobildaSystemHardware"),
+          "Failed to create motor on chip %d: %s", pwm_chip_numbers_[i], e.what()
+        );
+        return hardware_interface::CallbackReturn::ERROR;
+    }
   }
 
   for (const hardware_interface::ComponentInfo & joint : info_.joints)
@@ -147,10 +146,11 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_activate(
 
   bool success = true;
 
-  for (auto motor: motors_) {
-    success = success & motor.trySetVelocity(0);
-    //RCLCPP_INFO(rclcpp::get_logger("GobildaSystemHardware"),
-    //       "Motor activated");
+  for (auto i = 0u; i < hw_positions_.size(); i++) {
+    // Send a neutral signal on init
+    success = success & motors_[i]->trySetVelocity(1500);
+    RCLCPP_DEBUG(rclcpp::get_logger("GobildaSystemHardware"),
+                  "Motor activated");
   }
 
   if (!success)
@@ -173,8 +173,9 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_deactivate(
   
   bool success = true;
   
-  for (auto motor : motors_) {
-    success = success && motor.trySetVelocity(0);
+  for (auto i = 0u; i < hw_positions_.size(); i++) {
+    // Sned neutral signal on de-activate!
+    success = success && motors_[i]->trySetVelocity(1500);
   }
   // Add the gpioTerminateFunction to release the memory!!
 
@@ -193,19 +194,8 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_deactivate(
 hardware_interface::return_type GobildaSystemHardware::read(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
 {
-  for (std::size_t i = 0; i < hw_velocities_.size(); i++)
-  {
-    // Simulate DiffBot wheels's movement as a first-order system
-    // Update the joint status: this is a revolute joint without any limit.
-    // Simply integrates
-    hw_positions_[i] = hw_positions_[i] + period.seconds() * hw_velocities_[i];
-    /*
-    RCLCPP_INFO(  
-      rclcpp::get_logger("GobildaSystemHardware"),
-      "Got position state %.5f and velocity state %.5f for '%s'!", hw_positions_[i],
-      hw_velocities_[i], info_.joints[i].name.c_str());*/
-  }
-
+  // This 'read' function should receive information from encoder sensors
+  // However, since presently there are no encoders we can ignore this function.
   return hardware_interface::return_type::OK;
 }
 
@@ -215,11 +205,6 @@ hardware_interface::return_type gobilda_robot ::GobildaSystemHardware::write(
   bool success = true;
 
   for (auto i = 0u; i < hw_commands_.size(); i++) {
-    /*
-    RCLCPP_INFO(
-      rclcpp::get_logger("GobildaSystemHardware"),
-      "Sending command %.2f to Motor %d", hw_commands_[i], i
-    ); */
     // ##### CRITICAL: MIRROR THE COMMAND FOR ONE MOTOR #####
     std::string joint_name = info_.joints[i].name;
     
@@ -240,12 +225,12 @@ hardware_interface::return_type gobilda_robot ::GobildaSystemHardware::write(
     //   0 effort -> 1500 + (   0 * 4.5) = 1500 +   0 = 1500 us (Stop)
     //  100 effort -> 1500 + ( 100 * 4.5) = 1500 + 450 = 1950 us (Full Forward)
     double effort_command = hw_commands_[i] * sign;
+    RCLCPP_DEBUG(rclcpp::get_logger("GobildaSystemHardware"),
+              "Calculated effort: %.2f", effort_command);
     int pulse_width_us = 1500 + static_cast<int>(effort_command * 25);
-    /*RCLCPP_INFO(
-      rclcpp::get_logger("GobildaSystemHardware"),
-      "Sending pulse %.2f to Motor %d", hw_commands_[i], pulse_width_us
-    );*/
-    success = success && motors_[i].trySetVelocity(pulse_width_us);
+    RCLCPP_DEBUG(rclcpp::get_logger("GobildaSystemHardware"),
+              "Sent pulse: %d", pulse_width_us);
+    success = success && motors_[i]->trySetVelocity(pulse_width_us);
   }
   
   if (!success) {
@@ -262,4 +247,5 @@ hardware_interface::return_type gobilda_robot ::GobildaSystemHardware::write(
 #include "pluginlib/class_list_macros.hpp"
 PLUGINLIB_EXPORT_CLASS(
   gobilda_robot::GobildaSystemHardware,
-  hardware_interface::SystemInterface)
+  hardware_interface::SystemInterface
+)

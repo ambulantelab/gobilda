@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 20  # Hz
+    update_rate: 50  # Hz
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -28,7 +28,8 @@ gobilda_base_controller:
 
     open_loop: true
     position_feedback: false
-    enable_odom_tf: true
+    # The ODOM TRANFORM will come from ths KISS_ICP package!
+    enable_odom_tf: false
 
     cmd_vel_timeout: 0.5
     #publish_limited_velocity: true

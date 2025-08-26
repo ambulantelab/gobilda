@@ -48,10 +48,10 @@ private:
   std::vector<double> hw_commands_;
   std::vector<double> hw_positions_;
   std::vector<double> hw_velocities_;
-  std::vector<Motor> motors_;
+  std::vector<std::unique_ptr<Motor>> motors_; // Change to pointers
   // Code assumes that Right motor is on pin 32
   // and Left motor is on pin 15
-  std::vector<int> pins_ = {15, 32};
+  std::vector<int> pwm_chip_numbers_ = {0, 3};
 };
 
 }  // namespace gobilda_robot
