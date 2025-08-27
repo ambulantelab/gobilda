@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
 project(gobilda_robot)
-set(JETGPIO_DIR "~/gobilda/JETGPIO/libjetgpio.so")
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -29,7 +28,7 @@ $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/hardware/include>
 $<INSTALL_INTERFACE:include/gobilda_robot>
 )
 
-target_link_libraries(${PROJECT_NAME} ${JETGPIO_DIR})
+target_link_libraries(${PROJECT_NAME})
 
 ament_target_dependencies(
   ${PROJECT_NAME}

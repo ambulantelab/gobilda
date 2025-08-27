@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'final_project'
+package_name = 'gobilda_utilities'
 
 setup(
     name=package_name,
@@ -13,15 +13,15 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='robot',
-    maintainer_email='robot@todo.todo',
+    maintainer='calpoly',
+    maintainer_email='cdiazalv@calpoly.edu',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'teleop_gobilda = final_project.teleop_twist_keyboard:main',
-            'draw_square = final_project.draw_square:main',
+            'draw_square = gobilda_utilities.draw_square:main',
+            'teleop_gobilda = gobilda_utilities.teleop_twist_keyboard:main',
         ],
     },
 )

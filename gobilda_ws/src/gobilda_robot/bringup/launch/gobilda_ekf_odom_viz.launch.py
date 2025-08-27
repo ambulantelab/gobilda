@@ -36,6 +36,17 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
+            'ekf_params_file',
+            default_value=PathJoinSubstitution([
+                    FindPackageShare('gobilda_robot'),
+                    'config',
+                    'ekf.yaml',
+                ])
+        )
+    )
+
+    declared_arguments.append(
+        DeclareLaunchArgument(
             'oakd_params_file',
             default_value=PathJoinSubstitution([
                     FindPackageShare('gobilda_robot'),
@@ -45,11 +56,23 @@ def generate_launch_description():
         )
     )
 
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            'rectify_rgb',
+            default_value='True',
+            description='Whether to rectify RGB images'
+        )
+    )
+
 
     # Initialize Arguments
     use_mock_hardware = LaunchConfiguration('use_mock_hardware')
     laser_frame_id = LaunchConfiguration('frame_id')
+    
     oakd_params_file = LaunchConfiguration('oakd_params_file')
+    ekf_params_file = LaunchConfiguration('ekf_params_file')
+
+    rectify_rgb = LaunchConfiguration('rectify_rgb')
     
     # Grab the FoxGlove launch file
     foxglove = IncludeLaunchDescription(
@@ -105,17 +128,13 @@ def generate_launch_description():
                 'base_frame': 'base_link',
                 'lidar_odom_frame': 'odom',
                 'invert_odom_tf': 'False',
+                'orientation_covariance': '0.3',
+                'publish_odom_tf': 'False',
             }.items(),
     )
 
     # Grab the Camera launch file
     # Path to local camera configure file
-    # TODO: learn how to add my own config 
-    camera_file = PathJoinSubstitution([
-            FindPackageShare('depthai_ros_driver'),
-            'config',
-            'segmentation.yaml',
-    ])
     oakd_camera= IncludeLaunchDescription(
             PythonLaunchDescriptionSource([
                 PathJoinSubstitution([
@@ -132,6 +151,36 @@ def generate_launch_description():
                 'imu_from_descr': 'false',
                 'params_file': oakd_params_file,
             }.items()
+    )
+
+    rtabmap_odom = Node(
+        package='rtabmap_odom',
+        executable='rgbd_odometry',
+        name='rgbd_odometry',
+        output='screen',
+        parameters=[
+            # Synchronization parameters
+            {'approx_sync': True},
+            {'publish_tf': False},
+
+            # RANSAC params
+            {'Vis/MinInliers': '15'},
+            {'publish_tf': False},
+        ],
+        remappings=[
+            ("rgb/image", "oakd/rgb/image_rect"),
+            ("rgb/camera_info", "oakd/rgb/camera_info"),
+            ("depth/image", "oakd/stereo/image_raw"),
+            ('odom', 'rtabmap/odom'),
+        ],
+    )
+
+    robot_localization = Node(
+            package='robot_localization',
+            executable='ekf_node',
+            name='ekf_odom',
+            output='screen',
+            parameters=[ekf_params_file],
     )
 
     # Get URDF via xacro
@@ -167,7 +216,7 @@ def generate_launch_description():
             ('/gobilda_base_controller/cmd_vel', '/gobilda/cmd_vel'),
         ],
         # uncomment for debugging
-        arguments=[ '--ros-args', '--log-level', 'debug', ],
+        # arguments=[ '--ros-args', '--log-level', 'debug', ],
     )
     robot_state_pub_node = Node(
         package='robot_state_publisher',
@@ -198,6 +247,8 @@ def generate_launch_description():
         joint_state_broadcaster_spawner,
         robot_controller_spawner,
         laser_to_pointcloud,
+        rtabmap_odom,
+        robot_localization,
     ]
 
     launch_files = [

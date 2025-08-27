@@ -1,75 +1,36 @@
 #include "gobilda_robot/motor.hpp"
-
-//using namespace gobilda_robot;
-
-// non_blocking_motor.cpp
+// non_blocking motor.cpp
 #include <fstream>
 #include <chrono>
 
 Motor::Motor(int pwm_chip, int pwm_channel) 
     : pwm_chip_number_(pwm_chip), pwm_channel_(pwm_channel) {
-        
+
     pwm_chip_path_ = "/sys/class/pwm/pwmchip" + std::to_string(pwm_chip_number_) + "/";
     pwm_channel_path_ = pwm_chip_path_ + "pwm" + std::to_string(pwm_channel_) + "/";
     pwm_duty_cycle_path_ = pwm_channel_path_ + "duty_cycle";
-    
-    // Try to export the PWM channel (it might already be exported)
-    std::ifstream check_file(pwm_channel_path_ + "period");
-    if (!check_file) {
-        // Channel doesn't exist, need to export it
-        std::ofstream export_file(pwm_chip_path_ + "export");
-        if (!export_file) {
-            throw std::runtime_error("Failed to open export file");
-        }
-        export_file << pwm_channel_;
-        export_file.close();
         
-        // Wait for kernel to create the directory
+    // 1) Export if necessary
+    if (!std::ifstream(pwm_channel_path_ + "period")) {
+        std::ofstream(pwm_chip_path_ + "export") << pwm_channel_;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-    
-    // Export the PWM channel
-    std::ofstream export_file(pwm_chip_path_ + "export");
-    if (!export_file) {
-        throw std::runtime_error("Failed to open export file for writing");
+
+    // 2) Open FDs after sysfs nodes exist
+    period_fd_ = open((pwm_channel_path_ + "period").c_str(),  O_WRONLY | O_CLOEXEC);
+    duty_fd_   = open((pwm_channel_path_ + "duty_cycle").c_str(), O_WRONLY | O_CLOEXEC);
+    enable_fd_ = open((pwm_channel_path_ + "enable").c_str(),  O_WRONLY | O_CLOEXEC);
+    if (period_fd_ < 0 || duty_fd_ < 0 || enable_fd_ < 0) throw std::runtime_error("open fd");
+
+    // 3) Configure period + neutral
+    {
+        char buf[16]; int len = snprintf(buf, sizeof(buf), "%d", period_ns_);
+        pwrite(period_fd_, buf, len, 0);
+        len = snprintf(buf, sizeof(buf), "%d", duty_cycle_ns_);
+        pwrite(duty_fd_, buf, len, 0);
+        pwrite(enable_fd_, "1", 1, 0);
     }
-    export_file << pwm_channel_;
-    export_file.close();
-    
-    // Wait for kernel to create the PWM directory (important!)
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    
-    // Check if PWM channel directory was created
-    std::ifstream check_file_2(pwm_channel_path_ + "period");
-    if (!check_file_2) {
-        throw std::runtime_error("PWM channel directory not created after export");
-    }
-    
-    // Set period (20ms for 50Hz = 20,000,000 nanoseconds)
-    std::ofstream period_file(pwm_channel_path_ + "period");
-    if (!period_file) {
-        throw std::runtime_error("Failed to open period file");
-    }
-    period_file << 20000000;
-    period_file.close();
-    
-    // Set initial duty cycle to neutral (1.5ms)
-    std::ofstream duty_file(pwm_channel_path_ + "duty_cycle");
-    if (!duty_file) {
-        throw std::runtime_error("Failed to open duty_cycle file");
-    }
-    duty_file << 1500000; // 1.5ms in nanoseconds
-    duty_file.close();
-    
-    // Enable PWM
-    std::ofstream enable_file(pwm_channel_path_ + "enable");
-    if (!enable_file) {
-        throw std::runtime_error("Failed to open enable file");
-    }
-    enable_file << 1;
-    enable_file.close();
-    
-        // Initialize hardware here if needed
+
     running_ = true;
     pwm_thread_ = std::thread(&Motor::hardwareThread, this);
 }
@@ -86,27 +47,38 @@ bool Motor::trySetVelocity(int pulse_width_us) {
 
 void Motor::stop() {
     running_ = false;
-    if (pwm_thread_.joinable()) {
-        pwm_thread_.join();
-    }
-    // Do final hardware cleanup here
+    if (pwm_thread_.joinable()) pwm_thread_.join();
+    if (enable_fd_ >= 0) pwrite(enable_fd_, "0", 1, 0);
+    if (period_fd_ >= 0) close(period_fd_);
+    if (duty_fd_   >= 0) close(duty_fd_);
+    if (enable_fd_ >= 0) close(enable_fd_);
+    period_fd_ = duty_fd_ = enable_fd_ = -1;
 }
 
 void Motor::hardwareThread() {
+    // Get time now, so that I can sleep for variable time
+    // needed to hit my control loop
+    auto next = std::chrono::steady_clock::now();
     while (running_) {
         int current_pulse = target_pulse_.load();
-        setVelocityHardware(current_pulse); // BLOCKING call in separate thread
-        
-        // Sleep at reasonable rate (e.g., 50Hz)
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        // BLOCKING call in a separate thread
+        setVelocityHardware(current_pulse);
+        // Sleep until next iteration so that we hit timing rate
+        next += std::chrono::milliseconds(20);
+        std::this_thread::sleep_until(next);
     }
 }
 
 bool Motor::setVelocityHardware(int pulse_width_us) {
     // This is the original BLOCKING implementation
     // but now it runs in a separate thread
-    std::ofstream file(pwm_duty_cycle_path_);
-    if (!file) return false;
-    file << (pulse_width_us * 1000);
-    return !file.fail();
+    // TODO: Clamp + write-if-changed
+    const int duty_ns = pulse_width_us * 1000;
+
+    char buf[16];
+    int len = snprintf(buf, sizeof(buf), "%d", duty_ns);
+    if (len <= 0) return false;
+    // Write to the duty cycle file, which controls the PWM pins
+    if (pwrite(duty_fd_, buf, len, 0) < 0) { /* set io_error_ */ return false; }
+    return true;
 }

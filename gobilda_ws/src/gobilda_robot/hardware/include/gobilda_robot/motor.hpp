@@ -8,6 +8,8 @@
 #include <thread>
 #include <mutex>
 #include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
 
 class Motor {
 private:
@@ -21,6 +23,10 @@ private:
     
     int pwm_chip_number_;
     int pwm_channel_;
+    int period_fd_ = -1, duty_fd_ = -1, enable_fd_ = -1;
+    // Values grabbed from Gobilda specs!
+    int period_ns_ = 20000000, duty_cycle_ns_ = 1500000;
+    int min_us_ = 1050, max_us_ = 1950;
     
 public:
     Motor(int pwm_chip, int pwm_channel);

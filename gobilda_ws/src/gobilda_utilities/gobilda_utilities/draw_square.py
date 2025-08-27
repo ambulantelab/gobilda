@@ -19,7 +19,7 @@ class DrawSquare(Node):
         # 'ros2 node list'
         super().__init__('draw_square_gobilda')
         
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
+        self.publisher_ = self.create_publisher(TwistStamped, '/gobilda/cmd_vel', 10)
 
         # Functions running at 1Hz
         timer_period = 1.0  # seconds

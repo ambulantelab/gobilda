@@ -192,47 +192,56 @@ hardware_interface::CallbackReturn GobildaSystemHardware::on_deactivate(
 }
 
 hardware_interface::return_type GobildaSystemHardware::read(
-  const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
+  const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
   // This 'read' function should receive information from encoder sensors
   // However, since presently there are no encoders we can ignore this function.
   return hardware_interface::return_type::OK;
 }
 
-hardware_interface::return_type gobilda_robot ::GobildaSystemHardware::write(
-  const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
+hardware_interface::return_type gobilda_robot::GobildaSystemHardware::write(
+    const rclcpp::Time &, const rclcpp::Duration &) 
 {
   bool success = true;
 
-  for (auto i = 0u; i < hw_commands_.size(); i++) {
-    // ##### CRITICAL: MIRROR THE COMMAND FOR ONE MOTOR #####
-    std::string joint_name = info_.joints[i].name;
-    
-    // Check which joint we are commanding and apply a sign factor
-    double sign = 1.0; // Default sign (positive)
-    if (joint_name == "left_wheel_joint") sign = -1.0;
+  // Map wheel angular velocity (rad/s) to PWM µs
+  auto map_vel_to_us = [&](double u_rad_s) -> int {
+    if (std::fabs(u_rad_s) < cmd_deadband_rad_s)
+      return static_cast<int>(std::llround(neutral_us));
 
-    // MAP the -100 to 100 effort range to the 1050 to 1950 microsecond range.
-    // This is the core conversion for your hardware.
-    //    
-    //  Linear mapping formula:
-    //  pulse_width = 1500 + (effort_command * 4.5)
-    //
-    //  How it works:
-    //  This was acutally tuned so that the robot follows the suggested speed of 0.5m/s
-    //  NOTE: Turning odom is stil very bad!
-    //  -100 effort -> 1500 + (-100 * 4.5) = 1500 - 450 = 1050 us (Full Reverse)
-    //   0 effort -> 1500 + (   0 * 4.5) = 1500 +   0 = 1500 us (Stop)
-    //  100 effort -> 1500 + ( 100 * 4.5) = 1500 + 450 = 1950 us (Full Forward)
-    double effort_command = hw_commands_[i] * sign;
-    RCLCPP_DEBUG(rclcpp::get_logger("GobildaSystemHardware"),
-              "Calculated effort: %.2f", effort_command);
-    int pulse_width_us = 1500 + static_cast<int>(effort_command * 25);
-    RCLCPP_DEBUG(rclcpp::get_logger("GobildaSystemHardware"),
-              "Sent pulse: %d", pulse_width_us);
-    success = success && motors_[i]->trySetVelocity(pulse_width_us);
+    const bool fwd = (u_rad_s > 0.0);
+    const double mag  = std::fabs(u_rad_s) - cmd_deadband_rad_s;
+    const double base = fwd ? deadband_fwd_us      : deadband_rev_us;
+    const double gain = fwd ? gain_fwd_us_per_rads : gain_rev_us_per_rads;
+
+    double pulse = neutral_us + std::copysign(base + gain * mag, u_rad_s);
+
+    // Directional caps to enforce your chosen “full” values
+    if (fwd) pulse = std::min(pulse, top_fwd_us);
+    else     pulse = std::max(pulse, top_rev_us);
+
+    // Hardware guardrails
+    pulse = std::clamp(pulse, min_us, max_us);
+    return static_cast<int>(std::llround(pulse));
+  };
+
+  for (size_t i = 0; i < hw_commands_.size(); ++i) {
+    // One sign flip for the left side so +u means forward robot motion
+    const bool is_left = (info_.joints[i].name == "left_wheel_joint");
+    const double u_rad_s = hw_commands_[i] * (is_left ? -1.0 : 1.0);
+
+    const int pulse_i = map_vel_to_us(u_rad_s);
+
+    // Optional: throttle log to see mapping/clamping
+    RCLCPP_DEBUG(
+      rclcpp::get_logger("GobildaSystemHardware"),
+      "[%s] u=%.3f rad/s -> %d us",
+      info_.joints[i].name.c_str(), u_rad_s, pulse_i
+    );
+
+    success = success && motors_[i]->trySetVelocity(pulse_i);
   }
-  
+
   if (!success) {
     RCLCPP_ERROR(rclcpp::get_logger("GobildaSystemHardware"),
                  "Error setting velocity on motors during write step!");

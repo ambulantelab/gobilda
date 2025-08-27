@@ -181,12 +181,15 @@
 
      <!-- From Turtlebot4 package sensor definitions -->
     <xacro:rplidar name="rplidar" parent_link="base_link" gazebo="$(arg gazebo)">
+        <!-- Should correspond to the actual offset on the robot -->
         <origin xyz="${lidar_offset_x} ${lidar_offset_y} ${lidar_offset_z}"
-                rpy="0 0 0"/>
+                rpy="0 0 -0.15"/>
     </xacro:rplidar>
 
     <xacro:oakd model="pro" parent_link="base_link">
-        <origin xyz="${oakd_pro_x_offset} ${oakd_pro_y_offset} ${oakd_pro_z_offset}"/>
+        <!-- Should correspond to the actual offset on the robot -->
+        <origin xyz="${oakd_pro_x_offset} ${oakd_pro_y_offset} ${oakd_pro_z_offset}"
+                rpy="0 0 0"/>
     </xacro:oakd>
 
 </xacro:macro>
