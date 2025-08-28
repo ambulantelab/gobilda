@@ -35,7 +35,7 @@ Select the following options: Configure Jetson 40pin Header -> Configure header 
 (We will reboot the Orin in a moment)
 
 #### 2. Create 'pwm' group and write udev rules
-Then, we need to run the follwing script which will copy the udev rules to the corresponding directory and create a group 'pwm' that will allow our user to send pwm commands without sudo permissions:
+Then, we need to run the follwing script (in the /env_scripts/ directory) which will copy the udev rules to the corresponding directory and create a group 'pwm' that will allow our user to send pwm commands without sudo permissions:
 ```bash
 sudo bash jetson_orin.sh
 ```
