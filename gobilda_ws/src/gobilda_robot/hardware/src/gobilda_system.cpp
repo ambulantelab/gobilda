@@ -214,6 +214,10 @@ hardware_interface::return_type gobilda_robot::GobildaSystemHardware::write(
     const double base = fwd ? deadband_fwd_us      : deadband_rev_us;
     const double gain = fwd ? gain_fwd_us_per_rads : gain_rev_us_per_rads;
 
+    base = 1500.0;
+    gain = u_rad_s / 32.7;
+    mag = 450.0;
+
     double pulse = neutral_us + std::copysign(base + gain * mag, u_rad_s);
 
     // Directional caps to enforce your chosen “full” values
