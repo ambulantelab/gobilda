@@ -24,6 +24,39 @@ Before you begin, ensure you have met the following requirements:
 ### Connection to the internet
 Hey! You cannot clone this repo without being connected to the internet. We have a couple options for our platforms, but the easiest will be to use VNC to open up a desktop viewer on the Orin and then use the Network GUI to connect to a network. A good option for now will be to connect to calpoly's 'eduroam' network.
 
+### Setup the permissions, udev rules, and pwm groups
+Before you can use the ros2 driver successfully, there are a number of permission and udev rules that need to be changed.
+#### 1. jetson-io.py
+We first need to set the pins 15 & 32 to on the dev kit's 40-pin expansion board to output PWM signals. Fortunately, NVIDIA provides a terminal tool for generating the required files. Run the following command:
+```bash
+sudo /opt/nvidia/jetson-io/jetson-io.py
+```
+Select the following options: Configure Jetson 40pin Header -> Configure header pins manually -> pwm1 & pwm7 -> Save pin changes -> Save and exit without rebooting
+(We will reboot the Orin in a moment)
+
+#### 2. Create 'pwm' group and write udev rules
+Then, we need to run the follwing script which will copy the udev rules to the corresponding directory and create a group 'pwm' that will allow our user to send pwm commands without sudo permissions:
+```bash
+sudo bash jetson_orin.sh
+```
+After running the above commands we can reboot the Orin Nano:
+```bash
+sudo shutdown now
+```
+
+#### 3. Compile and test the 'simple_pwm.cpp'
+Finally, to make sure that everything is wired correctly and that we can send pwm signals, let's compile and run the simple_pwm code:
+To compile the file and run the executable:
+```bash
+# Compile code
+g++ simple_pwm.cpp -o simple_pwm
+
+# Run the executable
+./simple_pwm
+```
+Whwn you run the executable you should see output and soon the wheels of your Gobilda robot should start moving!
+After, confirming that this code works we can move to compiling the ROS2 workspace and running more advanced software techniques.
+
 ### Clone the Repository
 Once connected to the internet you can clone this repo with the following command:
 
