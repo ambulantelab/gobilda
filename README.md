@@ -39,7 +39,7 @@ Then, we need to run the follwing script which will copy the udev rules to the c
 ```bash
 sudo bash jetson_orin.sh
 ```
-After running the above commands we can reboot the Orin Nano:
+After running the above command we can reboot the Orin Nano:
 ```bash
 sudo shutdown now
 ```
@@ -54,7 +54,7 @@ g++ simple_pwm.cpp -o simple_pwm
 # Run the executable
 ./simple_pwm
 ```
-Whwn you run the executable you should see output and soon the wheels of your Gobilda robot should start moving!
+When you run the executable you should see output and soon the wheels of your Gobilda robot should start moving!
 After, confirming that this code works we can move to compiling the ROS2 workspace and running more advanced software techniques.
 
 ### Clone the Repository
