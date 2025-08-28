@@ -21,12 +21,34 @@ Before you begin, ensure you have met the following requirements:
 
 ## Setup Guide Gobilda, ROS2, Jetson Orin Nano
 
-### 1. Connection to the internet
+### Connection to the internet
 Hey! You cannot clone this repo without being connected to the internet. We have a couple options for our platforms, but the easiest will be to use VNC to open up a desktop viewer on the Orin and then use the Network GUI to connect to a network. A good option for now will be to connect to calpoly's 'eduroam' network.
 
-### 2. Clone the Repository
+### Clone the Repository
 Once connected to the internet you can clone this repo with the following command:
 
 ```bash
 git clone --recursive https://github.com/ambulantelab/gobilda.git
+```
+### Compiling the Driver
+#### 1. Update CMake
+After you can cloned the repo, we can try building the driver. Because the default cmake version installed does not work for the driver, we'll first need to update our cmake, we can use the provided script (env_scripts/update_cmake.sh) to do that:
+```bash
+sudo bash update_cmake.sh
+```
+#### 2. Install ROS2 dependencies
+Next we should install all the dependencies that are required for the driver. Run the following commands at the workspace level (/gobilda_ws/):
+```bash
+# Update rosdep database
+rosdep update
+
+# Install dependencies for a specific package
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+#### 3. Compilation
+To compile the worksapce run
+```bash
+# ROS2 Compilation Command
+colcon build --symlink-install
 ```
