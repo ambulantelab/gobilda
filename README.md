@@ -1,30 +1,32 @@
-# Jetson Orin Nano Setup
+# This repository contains the ROS2 Driver for our Gobilda robot setup in class CPE416 
+# ROS2 Driver and Jetson Orin Nano Setup
 
-Comprehensive setup scripts and configuration for NVIDIA Jetson Orin Nano development environment.
+## Prerequisites (tested on following hardware)
 
-![Jetson Orin Nano](images/jetson_orin.jpg)
+- Jetson Orin Nano
+- Gobilda Starter Kit
+- WiFi connectivity, Ethernet connectivity
+- A1 RP LiDAR
+- Oak-d Pro Camera
+- Ethernet, USB Cables, Power Cables
+- 12V Gobilda Battery
 
-## 🚀 Features
-
-- Automated CMake installation and setup
-- PWM device configuration for hardware access
-- WiFi connectivity setup for enterprise networks
-- System configuration and optimization scripts
-- User management utilities
-
-## 📋 Prerequisites
+## Dependencies
 
 Before you begin, ensure you have met the following requirements:
 
-- NVIDIA Jetson Orin Nano
-- JetPack 5.1.2 or later
-- Ubuntu 20.04/22.04
-- Internet connectivity for package installation
+- ROS2 Humble Installation
+- Ubuntu 22.04.5 LTS
+- Jetpack 6.0
 
-## 🛠️ Installation
+## Setup Guide Gobilda, ROS2, Jetson Orin Nano
 
-### 1. Clone the Repository
+### 1. Connection to the internet
+Hey! You cannot clone this repo without being connected to the internet. We have a couple options for our platforms, but the easiest will be to use VNC to connect to open up a desktop viewer on the Orin and then use the Network GUI to connect to a network. A good option for now will be to connect to calpoly's 'eduroam' network.
+
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/jetson-orin-setup.git
 cd jetson-orin-setup
+```
