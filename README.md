@@ -79,6 +79,7 @@ rosdep update
 # Install dependencies for a specific package
 rosdep install --from-paths src --ignore-src -r -y
 ```
+This command should have installed many packages that are required for the driver to work correctly.
 
 #### 3. Compilation
 To compile the worksapce run
@@ -86,3 +87,6 @@ To compile the worksapce run
 # ROS2 Compilation Command
 colcon build --symlink-install
 ```
+Workspace should compile with no, issues. (If you see a Cmake warning output you can safely ignore that.)
+
+#### 4. Source Overlap, Underlay, and ROS2 Launch Files
