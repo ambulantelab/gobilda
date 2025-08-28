@@ -24,6 +24,13 @@ Before you begin, ensure you have met the following requirements:
 ### Connection to the internet
 Hey! You cannot clone this repo without being connected to the internet. We have a couple options for our platforms, but the easiest will be to use VNC to open up a desktop viewer on the Orin and then use the Network GUI to connect to a network. A good option for now will be to connect to calpoly's 'eduroam' network.
 
+### Clone the Repository
+Once connected to the internet you can clone this repo with the following command:
+
+```bash
+git clone --recursive https://github.com/ambulantelab/gobilda.git
+```
+
 ### Setup the permissions, udev rules, and pwm groups
 Before you can use the ros2 driver successfully, there are a number of permission and udev rules that need to be changed.
 #### 1. jetson-io.py
@@ -57,12 +64,6 @@ g++ simple_pwm.cpp -o simple_pwm
 When you run the executable you should see output and soon the wheels of your Gobilda robot should start moving!
 After, confirming that this code works we can move to compiling the ROS2 workspace and running more advanced software techniques.
 
-### Clone the Repository
-Once connected to the internet you can clone this repo with the following command:
-
-```bash
-git clone --recursive https://github.com/ambulantelab/gobilda.git
-```
 ### Compiling the Driver
 #### 1. Update CMake
 After you can cloned the repo, we can try building the driver. Because the default cmake version installed does not work for the driver, we'll first need to update our cmake, we can use the provided script (env_scripts/update_cmake.sh) to do that:
