@@ -110,3 +110,15 @@ ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch
 
 If all the nodes launched successfully, you should see the following output:
 - INSERT IMAGE HERE
+
+## Foxglove
+
+## Workspace Structure
+### Packages
+#### 'gobilda_robot'
+##### 1. bringup
+##### 2. description
+##### 3. hardware
+
+#### 'gobilda_utilities'
+#### 'kiss_icp'
