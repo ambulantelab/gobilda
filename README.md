@@ -118,6 +118,8 @@ Foxglove is a powerful, cross-platform visualization tool that we'll use through
 
 Before downloading the desktop application, you’ll need to create a free Foxglove account. Once you're in, pay special attention to the Overview and Frameworks → ROS 2 sections of the documentation, as they’ll give you a solid foundation for integrating Foxglove with the tools we'll be using.
 
+(Finally, note that the ros-humble-foxglove-bridge package should have been installed on the Orin when you installed dependencies using the rosdep commands.)
+
 ## Workspace Structure
 ### Packages
 #### 'gobilda_robot'
