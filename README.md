@@ -102,7 +102,7 @@ After the workspace has compiled successfully, we need to make sure that the wor
 source install/setup.bash
 ```
 
-Finally, try the following launch file to run a minimal setup for the robot:
+Finally, try the following launch file to run an odom (ekf) setup for the robot:
 ```bash
 # EKF Odom for Gobilda
 ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch
