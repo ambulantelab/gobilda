@@ -142,6 +142,6 @@ Implements the low-level interface between ROS2 and the Jetson Orin Nano’s GPI
 Some utility nodes for tele-operating the robot and subscribing to sensor data.
 
 #### *kiss_icp*
-KISS-ICP stands for K(eep) I(t) S(mall) and S(imple) I(terative) C(losest) P(oint), a lightweight LiDAR odometry solution developed by the University of Bonn. This ROS 2 node processes LiDAR scan data from the GoBilda robot to estimate its motion and position over time — all without relying on wheel encoders or external localization systems.
+KISS-ICP stands for K(eep) I(t) S(mall) and S(imple) I(terative) C(losest) P(oint), a lightweight LiDAR odometry solution developed by Vizzo et al. the University of Bonn. This ROS 2 node processes LiDAR scan data from the GoBilda robot to estimate its motion and position over time — all without relying on wheel encoders or external localization systems.
 
 It’s an efficient and nice approach to real-time odometry, well-suited for mobile robots operating in structured environments. If you're interested in the algorithmic details, be sure to check out the [original research paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/vizzo2023ral.pdf).
