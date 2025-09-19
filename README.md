@@ -22,7 +22,9 @@ Before you begin, ensure you have met the following requirements:
 ## Setup Guide Gobilda, ROS2, Jetson Orin Nano
 
 ### Connection to the internet
-Hey! You cannot clone this repo without being connected to the internet. The best option we have for our Orin platforms is to run the *tigervnc_setup.sh* script (found in this repo) to properly connect the Orin to the *CP-IoT-Secure* network. Note that your Orin maybe already be configured to do that. Also, note that you *are* able to connect to the Orin even when your laptop is connected to the *eduroam* ssid and the Orin to the *CP-IoT-Secure* ssid.
+Hey! You cannot clone this repo without being connected to the internet. The best option we have for our Orin platforms is to run the *tigervnc_setup.sh* script (found in this repo) to properly connect the Orin to the *CP-IoT-Secure* network.
+
+Note that your Orin maybe already be configured to do that. Also, note that you *are* able to connect to the Orin even when your laptop is connected to the *eduroam* ssid and the Orin to the *CP-IoT-Secure* ssid.
 
 ### Clone the Repository
 Once connected to the internet you can clone this repo with the following command:
