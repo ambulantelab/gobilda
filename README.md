@@ -122,10 +122,16 @@ Before downloading the desktop application, you’ll need to create a free Foxgl
 
 ## Workspace Structure
 ### Packages
-#### 'gobilda_robot'
+#### *gobilda_robot*
 ##### 1. bringup
+Mainly, focused on launch files and configuration files that start up the gobilda's many drivers nodes.
 ##### 2. description
+Holds the urdf files that are needed to provide ROS2 with the available transformations and structure of the robot (links, joints, dimensions, etc.)
 ##### 3. hardware
+Holds code that acutally implements the "lower-level" communication between ROS2 and the Jetson GPIO. This is really the core of the robot's ROS2 driver and provides the foundation for controlling the robot with out sotware.
 
-#### 'gobilda_utilities'
-#### 'kiss_icp'
+#### *gobilda_utilities*
+Some utility nodes for tele-operating the robot and subscribing to sensor data.
+
+#### *kiss_icp*
+K(eep) I(t) S(mall) and S(imple) node/driver provided by the folks at the University of Bonn. This node effectively uses the data coming from the gobilda's LiDAR to calculate odometry. It provides a basis for tracking where our robot has moved without the need for encoders. Check out their [research paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/vizzo2023ral.pdf).
