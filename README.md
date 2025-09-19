@@ -108,7 +108,7 @@ Finally, try the following launch file to run an odom (ekf) setup for the robot:
 ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch
 ```
 
-If all the nodes launched successfully, you should see the following output:
+If all the nodes launched successfully, you should see the following output: (NOTE: This screenshot was taken from the Foxglove application. See section on Foxglove for more info.)
 - INSERT IMAGE HERE
 
 ## Foxglove
