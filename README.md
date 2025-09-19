@@ -134,7 +134,7 @@ Contains launch files and configuration files used to start all the necessary RO
 Holds the robot’s URDF (Unified Robot Description Format) files, which define the structure and kinematics of the robot. This includes the definition of links, joints, physical dimensions, and coordinate transformations, which are critical for tasks like visualization, simulation, and motion planning.
 
 ##### 3. hardware
-Implements the low-level interface between ROS 2 and the Jetson Orin Nano’s GPIO pins. This is the core of the robot’s driver layer, handling direct communication with motors, encoders, sensors, and other hardware components. It provides the foundation for higher-level control of the robot through ROS 2.
+Implements the low-level interface between ROS2 and the Jetson Orin Nano’s GPIO pins. This is the core of the robot’s driver layer, handling direct communication with motors through the (GoBilda) motor controllers. It provides the foundation for higher-level control of the robot through ROS2.
 
 #### *gobilda_utilities*
 Some utility nodes for tele-operating the robot and subscribing to sensor data.
