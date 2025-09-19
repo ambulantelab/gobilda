@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 ## Setup Guide Gobilda, ROS2, Jetson Orin Nano
 
 ### Connection to the internet
-Hey! You cannot clone this repo without being connected to the internet. We have a couple options for our platforms, but the easiest will be to use VNC to open up a desktop viewer on the Orin and then use the Network GUI to connect to a network. A good option for now will be to connect to calpoly's 'eduroam' network.
+Hey! You cannot clone this repo without being connected to the internet. The best option we have for our Orin platforms is to run teh tigervnc_connect.sh script in this repo to properly connect the Orin to the *CP-IoT-Secure* network. Note that your Orin maybe already be configured to do that.
 
 ### Clone the Repository
 Once connected to the internet you can clone this repo with the following command:
