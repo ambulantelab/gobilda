@@ -112,6 +112,9 @@ If all the nodes launched successfully, you should see the following output:
 - INSERT IMAGE HERE
 
 ## Foxglove
+Check out the [Foxglove documentation](https://docs.foxglove.dev/docs). Foxglove is a cross-platform visualization tool that we will use in this class to help us better understand and parse the data that is coming from the sensors and robot. This is an application that can be downloaded locally on your laptop and works without needing a ROS2 installation on your laptop. Note you will need to make a free account before you can download the desktop application. 
+
+In paticular chcek out the sections: Overview and Frameworks --> ROS2
 
 ## Workspace Structure
 ### Packages
