@@ -120,18 +120,26 @@ Before downloading the desktop application, you’ll need to create a free Foxgl
 
 (Finally, note that the *ros-humble-foxglove-bridge* package should have been installed on the Orin when you installed dependencies using the rosdep commands.)
 
-## Workspace Structure
+## 📁 Workspace Structure
+This project follows a standard ROS 2 workspace layout, organized into a few core packages that each serve a specific purpose in controlling and operating the GoBilda robot.
+
 ### Packages
-#### *gobilda_robot*
+#### 🧩 *gobilda_robot*
+This is the main package for integrating the GoBilda hardware with ROS 2. It is subdivided into the following components:
+
 ##### 1. bringup
-Mainly, focused on launch files and configuration files that start up the gobilda's many drivers nodes.
+Contains launch files and configuration files used to start all the necessary ROS 2 nodes that control the GoBilda robot. This includes node parameters, launch arguments, and any required startup logic for the robot’s software stack.
+
 ##### 2. description
-Holds the urdf files that are needed to provide ROS2 with the available transformations and structure of the robot (links, joints, dimensions, etc.)
+Holds the robot’s URDF (Unified Robot Description Format) files, which define the structure and kinematics of the robot. This includes the definition of links, joints, physical dimensions, and coordinate transformations, which are critical for tasks like visualization, simulation, and motion planning.
+
 ##### 3. hardware
-Holds code that acutally implements the "lower-level" communication between ROS2 and the Jetson GPIO. This is really the core of the robot's ROS2 driver and provides the foundation for controlling the robot with out sotware.
+Implements the low-level interface between ROS 2 and the Jetson Orin Nano’s GPIO pins. This is the core of the robot’s driver layer, handling direct communication with motors, encoders, sensors, and other hardware components. It provides the foundation for higher-level control of the robot through ROS 2.
 
 #### *gobilda_utilities*
 Some utility nodes for tele-operating the robot and subscribing to sensor data.
 
 #### *kiss_icp*
-K(eep) I(t) S(mall) and S(imple) node/driver provided by the folks at the University of Bonn. This node effectively uses the data coming from the gobilda's LiDAR to calculate odometry. It provides a basis for tracking where our robot has moved without the need for encoders. Check out their [research paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/vizzo2023ral.pdf).
+KISS-ICP stands for K(eep) I(t) S(mall) and S(imple) I(terative) C(losest) P(oint), a lightweight LiDAR odometry solution developed by the University of Bonn. This ROS 2 node processes LiDAR scan data from the GoBilda robot to estimate its motion and position over time — all without relying on wheel encoders or external localization systems.
+
+It’s an efficient and nice approach to real-time odometry, well-suited for mobile robots operating in structured environments. If you're interested in the algorithmic details, be sure to check out the [original research paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/vizzo2023ral.pdf).
