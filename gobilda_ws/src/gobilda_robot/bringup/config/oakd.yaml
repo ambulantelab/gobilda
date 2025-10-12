@@ -9,4 +9,4 @@
 
     imu:
       i_enable_rotation: true
-      i_message_type: IMU
+      i_message_type: IMU_WITH_MAG_SPLIT

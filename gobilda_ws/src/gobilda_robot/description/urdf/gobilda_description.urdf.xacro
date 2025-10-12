@@ -30,13 +30,13 @@
     <xacro:property name="wheel_inertia_y" value="${1.0/12.0 * wheel_mass * (3*wheel_radius*wheel_radius + wheel_width*wheel_width)}"/>
     <xacro:property name="wheel_inertia_z" value="${1.0/2.0 * wheel_mass * wheel_radius * wheel_radius}"/>
 
-    <xacro:property name="lidar_offset_x" value="0.1"/>
-    <xacro:property name="lidar_offset_y" value="0.0"/>
-    <xacro:property name="lidar_offset_z" value="0.07"/>
+    <xacro:property name="lidar_offset_x"   value="0.1"/>
+    <xacro:property name="lidar_offset_y"   value="-0.1"/>
+    <xacro:property name="lidar_offset_z"   value="0.07"/>
 
-    <xacro:property name="oakd_pro_x_offset"             value="0.11"/>
-    <xacro:property name="oakd_pro_y_offset"             value="0.1"/>
-    <xacro:property name="oakd_pro_z_offset"             value="0.07"/>
+    <xacro:property name="oakd_pro_x_offset"    value="0.2"/>
+    <xacro:property name="oakd_pro_y_offset"    value="0.1"/>
+    <xacro:property name="oakd_pro_z_offset"    value="0.07"/>
 
 
     <!-- Control Parameters -->    
@@ -96,7 +96,7 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <inertia ixx="${wheel_inertia_x}" ixy="0" ixz="0"
                      iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
-            </inertial>
+        </inertial>
     </link>
 
     <!-- Left Wheel Joint and Link Front-->
@@ -120,6 +120,13 @@
                 <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
             </geometry>
         </collision>
+
+        <inertial>
+            <mass value="2"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="${wheel_inertia_x}" ixy="0" ixz="0"
+                     iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+        </inertial>
     </link>
 
     <!-- Right Wheel Joint & Link Rear -->
@@ -177,13 +184,20 @@
                 <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
             </geometry>
         </collision>
+
+        <inertial>
+            <mass value="2"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="${wheel_inertia_x}" ixy="0" ixz="0"
+                     iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+        </inertial>
     </link>
 
      <!-- From Turtlebot4 package sensor definitions -->
     <xacro:rplidar name="rplidar" parent_link="base_link" gazebo="$(arg gazebo)">
         <!-- Should correspond to the actual offset on the robot -->
         <origin xyz="${lidar_offset_x} ${lidar_offset_y} ${lidar_offset_z}"
-                rpy="0 0 -0.15"/>
+                rpy="0 0 0.30"/>
     </xacro:rplidar>
 
     <xacro:oakd model="pro" parent_link="base_link">
@@ -192,5 +206,5 @@
                 rpy="0 0 0"/>
     </xacro:oakd>
 
-</xacro:macro>
+  </xacro:macro>
 </robot>

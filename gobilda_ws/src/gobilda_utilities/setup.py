@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'draw_square = gobilda_utilities.draw_square:main',
+            'draw_square_fb = gobilda_utilities.draw_square_fb:main',
             'teleop_gobilda = gobilda_utilities.teleop_twist_keyboard:main',
         ],
     },
