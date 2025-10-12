@@ -210,9 +210,13 @@ hardware_interface::return_type gobilda_robot::GobildaSystemHardware::write(
       return static_cast<int>(std::llround(neutral_us));
 
     const bool fwd = (u_rad_s > 0.0);
-    const double mag  = std::fabs(u_rad_s) - cmd_deadband_rad_s;
-    const double base = fwd ? deadband_fwd_us      : deadband_rev_us;
-    const double gain = fwd ? gain_fwd_us_per_rads : gain_rev_us_per_rads;
+    double mag  = std::fabs(u_rad_s) - cmd_deadband_rad_s;
+    double base = fwd ? deadband_fwd_us      : deadband_rev_us;
+    double gain = fwd ? gain_fwd_us_per_rads : gain_rev_us_per_rads;
+
+    base = 1500.0;
+    gain = u_rad_s / 32.7;
+    mag = 450.0;
 
     double pulse = neutral_us + std::copysign(base + gain * mag, u_rad_s);
 
