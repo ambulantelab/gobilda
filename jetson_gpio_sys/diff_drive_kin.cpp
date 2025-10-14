@@ -159,7 +159,8 @@ public:
         const double L = 0.4318;
 
         // you can return a pair variable like this
-        return {R, L};
+        // left motor angular velocity should be .first in pair
+        return {L, R};
     }
 
     void sendCommands(double wl, double wr, int current_step){
