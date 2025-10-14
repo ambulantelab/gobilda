@@ -7,7 +7,8 @@
 #include <signal.h>
 #include <atomic>
 
-// You can compile using g++
+// You can compile using the following command
+// g++ simple_pwm.cpp -o test_motor
 
 class HardwarePWMMotor {
 private:
@@ -157,15 +158,14 @@ int main(int argc, char* argv[]) {
     // Register signal handler
     signal(SIGINT, signalHandler);
     
-    if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <pwm_chip_number> <pwm_channel>" << std::endl;
-        std::cerr << "Example: " << argv[0] << " 0 0" << std::endl;
-        std::cerr << "Run 'ls /sys/class/pwm/' to see available PWM chips" << std::endl;
-        return 1;
-    }
+    // Note:
+    // std::cerr << "Run 'ls /sys/class/pwm/' to see available PWM chips" << std::endl;
     
-    int pwm_chip_number = std::stoi(argv[1]);
-    int pwm_channel = std::stoi(argv[2]);
+    // Variables for the left motor (robot perspective)
+    int pwm_chip_number = 0, pwm_channel = 0;
+
+    // Variables for the right motor (robot perspective)
+    int right_chip_number = 3, right_channel = 0;
 
     // In your main function, before creating HardwarePWMMotor:
     if (!ensurePWMReady(pwm_chip_number, pwm_channel)) {
@@ -174,25 +174,33 @@ int main(int argc, char* argv[]) {
     }
     
     try {
-        std::cout << "=== Hardware PWM Motor Test ===" << std::endl;
-        std::cout << "Chip: " << pwm_chip_number << ", Channel: " << pwm_channel << std::endl;
+        std::cout << "=== Hardware PWM Motor Test ===" << '\n';
+        std::cout << "(Left Motor) Chip: " << pwm_chip_number << ", Channel: " << pwm_channel << '\n';
+        std::cout << "(Right Motor) Chip: " << right_chip_number << ", Channel: " << right_channel << '\n';
         
-        HardwarePWMMotor motor(pwm_chip_number, pwm_channel);
+        HardwarePWMMotor motor_left(pwm_chip_number, pwm_channel);
+        HardwarePWMMotor motor_right(right_chip_number, right_channel);
         
         std::cout << "\nTesting PWM levels. Press Ctrl+C to exit at any time." << std::endl;
         
         // Test sequence
-        const int test_values[] = {1500, 1600, 1700, 1600, 1500, 1400, 1300, 1400, 1500};
+        // Values were taken empirically, and not very accurate.
+        // These values used for the 312 rpm GoBilda motors. These values will work
+        // as velocity limits. You shouldn't need to move your robot any faster than this.
+
+        const int test_values_left[] = {1500, 1400, 1350, 1500, 1605, 1650};
+        const int test_values_right[] = {1500, 1600, 1650, 1500, 1400, 1350};
         const char* descriptions[] = {
-            "NEUTRAL", "SLOW FORWARD", "FAST FORWARD", "SLOW FORWARD", 
-            "NEUTRAL", "SLOW REVERSE", "FAST REVERSE", "SLOW REVERSE", "NEUTRAL"
+            "NEUTRAL", "SLOW FORWARD", "FAST FORWARD", 
+            "NEUTRAL", "SLOW REVERSE", "FAST REVERSE",
         };
         
-        for (int i = 0; i < 9 && running; i++) {
+        for (int i = 3; i < 6 && running; i++) {
             std::cout << "\n" << (i+1) << "/9: " << descriptions[i] 
-                      << " (" << test_values[i] << "μs)" << std::endl;
+                      << " (" << test_values_left[i] << "μs)" << std::endl;
             
-            if (motor.trySetVelocity(test_values[i])) {
+            if ( motor_left.trySetVelocity(test_values_left[i]) &&
+                 motor_right.trySetVelocity(test_values_right[i]) ) {
                 std::cout << "PWM set successfully" << std::endl;
             } else {
                 std::cout << "Failed to set PWM" << std::endl;
