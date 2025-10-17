@@ -155,10 +155,11 @@ public:
         // .first = left_motor, .second = right_motor
         
         // Measured Values in meters for our Gobilda Robots
-        const double R = 0.044;
-        const double L = 0.4318;
+        const double Radius = 0.044;
+        const double Length = 0.4318;
 
         // you can return a pair variable like this
+        // left motor angular velocity should be .first in pair
         // return {L, R};
     }
 
