@@ -45,12 +45,19 @@ install(
   DIRECTORY hardware/include/
   DESTINATION include/${PROJECT_NAME}
 )
+
 install(
-  DIRECTORY description/ros2_control description/urdf
+  DIRECTORY description/ros2_control description/urdf description/sdf
   DESTINATION share/${PROJECT_NAME}
 )
+
 install(
   DIRECTORY bringup/launch bringup/config
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY gazebo/worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

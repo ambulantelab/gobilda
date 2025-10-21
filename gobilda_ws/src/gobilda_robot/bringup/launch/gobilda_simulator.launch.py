@@ -1,172 +1,79 @@
+# Copyright 2022 Open Source Robotics Foundation, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 
-from ament_index_python import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, RegisterEventHandler, GroupAction
+from launch.actions import DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription
 from launch.conditions import IfCondition
-from launch.event_handlers import OnProcessExit
-from launch.substitutions import (
-    Command,
-    FindExecutable,
-    PathJoinSubstitution,
-    LaunchConfiguration,
-)
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    # Declare arguments
-    declared_arguments = []
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            'use_mock_hardware',
-            default_value='false',
-            description='Start robot with mock hardware mirroring command to its states.',
-        )
-    )
+    # Configure ROS nodes for launch
 
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            'ekf_params_file',
-            default_value=PathJoinSubstitution([
-                    FindPackageShare('gobilda_robot'),
-                    'config',
-                    'ekf.yaml',
-                ])
-        )
-    )
-    
-    declared_arguments.append (
-        DeclareLaunchArgument(
-            'simulation', default_value='true',
-            description='Set to true to launch Gazebo Ignition simulation'
-        )
-    )
-
-    use_sim_time = LaunchConfiguration('simulation')
-
-    pkg_ros_gz_sim_demos = get_package_share_directory('ros_gz_sim_demos')
+    # Setup project paths
+    pkg_project_description = get_package_share_directory('gobilda_robot')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
+    # Load the SDF file from "description" package
+    sdf_file  =  os.path.join(pkg_project_description, 'sdf', 'model.sdf')
+    with open(sdf_file, 'r') as infp:
+        robot_desc = infp.read()
 
-    # Initialize Arguments
-    use_mock_hardware = LaunchConfiguration('use_mock_hardware')
-    ekf_params_file = LaunchConfiguration('ekf_params_file')
-
-    # Start the gz simulator
+    # Setup to launch the simulator and Gazebo world
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')
-        ),
-
-        launch_arguments={
-            'gz_args': '--render-engine ogre2 -r empty.sdf',
-        }.items()
+            os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
+        launch_arguments={'gz_args': PathJoinSubstitution([
+            pkg_project_description,
+            'worlds',
+            'gobilda_sandbox.sdf'
+        ])}.items(),
     )
 
-    # Spawn robot into Gazebo
-    simulated_robot = Node(
-        package='ros_gz_sim',
-        executable='create',
-                
-        arguments=[
-            '-name', 'gobilda',
-            '-topic', 'robot_description'
-        ],
-        
-        output='screen'
-    )
-    
-    # Grab the FoxGlove launch file
-    foxglove = IncludeLaunchDescription(
-            XMLLaunchDescriptionSource([
-                PathJoinSubstitution([
-                    FindPackageShare('foxglove_bridge'),
-                    'launch',
-                    'foxglove_bridge_launch.xml',
-                ])
-            ]),
-    )
-
-    robot_localization = Node(
-            package='robot_localization',
-            executable='ekf_node',
-            name='ekf_odom',
-            output='screen',
-            parameters=[ekf_params_file],
-    )
-
-    # Get URDF via xacro
-    robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name='xacro')]),
-            ' ',
-            PathJoinSubstitution(
-                [FindPackageShare('gobilda_robot'), 'urdf', 'gobilda.urdf.xacro']
-            ),
-            ' ',
-            'use_mock_hardware:=',
-            use_mock_hardware,
-        ]
-    )
-    robot_description = {'robot_description': robot_description_content}
-
-    robot_controllers = PathJoinSubstitution(
-        [
-            FindPackageShare('gobilda_robot'),
-            'config',
-            'gobilda_controllers.yaml',
-        ]
-    )
-
-    control_node = Node(
-        package='controller_manager',
-        executable='ros2_control_node',
-        parameters=[robot_controllers],
-        output='both',
-        remappings=[
-            ('~/robot_description', '/robot_description'),
-            ('/gobilda_base_controller/cmd_vel', '/gobilda/cmd_vel'),
-        ],
-        # uncomment for debugging
-        # arguments=[ '--ros-args', '--log-level', 'debug', ],
-    )
-    robot_state_pub_node = Node(
+    # Takes the description and joint angles as inputs and publishes the 3D poses of the robot links
+    robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
+        name='robot_state_publisher',
         output='both',
-        parameters=[robot_description],
+        parameters=[
+            {'use_sim_time': True},
+            {'robot_description': robot_desc},
+        ]
     )
 
-    joint_state_broadcaster_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['joint_state_broadcaster', 
-                   '--controller-manager',
-                   '/controller_manager'],
+    # Bridge ROS topics and Gazebo messages for establishing communication
+    bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        parameters=[{
+            'config_file': os.path.join(pkg_project_description, 'bringup/config', 'gazebo_bridge.yaml'),
+            'qos_overrides./tf_static.publisher.durability': 'transient_local',
+        }],
+        output='screen'
     )
 
-    robot_controller_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['gobilda_base_controller', 
-                   '--controller-manager',
-                   '/controller_manager',],
-    )
-
-    nodes = [
-        control_node,
-        robot_state_pub_node,
-        joint_state_broadcaster_spawner,
-        robot_controller_spawner,
-        robot_localization,
-        simulated_robot,
-    ]
-    
-    # Ordering here has some effects on the startup timing of the nodes
-    return LaunchDescription(declared_arguments + [gz_sim] + [foxglove] + nodes)
+    return LaunchDescription([
+        gz_sim,
+        bridge,
+        robot_state_publisher,
+    ])
