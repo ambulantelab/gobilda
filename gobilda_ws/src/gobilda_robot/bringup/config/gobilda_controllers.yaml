@@ -32,7 +32,7 @@ gobilda_base_controller:
     # The ODOM TRANFORM will come from ths KISS_ICP package!
     enable_odom_tf: false
 
-    cmd_vel_timeout: 0.5
+    cmd_vel_timeout: 3.0
     #publish_limited_velocity: true
     #velocity_rolling_window_size: 10
 
@@ -41,11 +41,8 @@ gobilda_base_controller:
     linear.x.has_velocity_limits: true
     linear.x.has_acceleration_limits: true
     linear.x.has_jerk_limits: false
-    linear.x.max_velocity: 1.0
-    linear.x.min_velocity: -1.0
-    linear.x.max_acceleration: 1.0
-    linear.x.max_jerk: 0.0
-    linear.x.min_jerk: 0.0
+    linear.x.max_velocity: 0.25
+    linear.x.min_velocity: -0.25
 
     angular.z.has_velocity_limits: true
     angular.z.max_velocity: 1.0
@@ -54,7 +51,4 @@ gobilda_base_controller:
     angular.z.has_acceleration_limits: true
     angular.z.max_acceleration: 1.0
     angular.z.min_acceleration: -1.0
-    
-    angular.z.has_jerk_limits: false
-    angular.z.max_jerk: 0.0
-    angular.z.min_jerk: 0.0
+

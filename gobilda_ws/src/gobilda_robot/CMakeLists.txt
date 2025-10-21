@@ -47,17 +47,12 @@ install(
 )
 
 install(
-  DIRECTORY description/ros2_control description/urdf description/sdf
+  DIRECTORY description/ros2_control description/urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
 install(
   DIRECTORY bringup/launch bringup/config
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(
-  DIRECTORY gazebo/worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
