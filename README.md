@@ -107,7 +107,7 @@ source install/setup.bash
 Finally, try the following launch file to run an odom (ekf) setup for the robot:
 ```bash
 # EKF Odom for Gobilda
-ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch
+ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch.py
 ```
 
 If all the nodes launched successfully, you should see the following output: (NOTE: This screenshot was taken from the Foxglove application. See section on Foxglove for more info.)
