@@ -126,7 +126,7 @@ Before downloading the desktop application, you’ll need to create a free Foxgl
 This project follows a standard ROS 2 workspace layout, organized into a few core packages that each serve a specific purpose in controlling and operating the GoBilda robot.
 
 ### Packages
-#### 🧩 *gobilda_robot*
+#### *gobilda_robot*
 This is the main package for integrating the GoBilda hardware with ROS 2. It is subdivided into the following components:
 
 ##### 1. bringup
