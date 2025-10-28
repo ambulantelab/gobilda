@@ -107,13 +107,13 @@ source install/setup.bash
 Finally, try the following launch file to run an odom (ekf) setup for the robot:
 ```bash
 # EKF Odom for Gobilda
-ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch
+ros2 launch gobilda_robot gobilda_ekf_odom_viz.launch.py
 ```
 
 If all the nodes launched successfully, you should see the following output: (NOTE: This screenshot was taken from the Foxglove application. See section on Foxglove for more info.)
 ![EKF Output Example](images/gobilda_ekf_output.png)
 
-## Foxglove
+## Foxglove (Runs Locally on your Computer)
 Check out the official [Foxglove documentation](https://docs.foxglove.dev/docs) (Screenshot Above!) to get started.
 
 Foxglove is a powerful, cross-platform visualization tool that we'll use throughout this course to better understand and interpret data from our sensors and robots. One of the key advantages of Foxglove is that it can be installed locally on your laptop and run independently — no ROS 2 installation is required on your machine. 
@@ -126,7 +126,7 @@ Before downloading the desktop application, you’ll need to create a free Foxgl
 This project follows a standard ROS 2 workspace layout, organized into a few core packages that each serve a specific purpose in controlling and operating the GoBilda robot.
 
 ### Packages
-#### 🧩 *gobilda_robot*
+#### *gobilda_robot*
 This is the main package for integrating the GoBilda hardware with ROS 2. It is subdivided into the following components:
 
 ##### 1. bringup
