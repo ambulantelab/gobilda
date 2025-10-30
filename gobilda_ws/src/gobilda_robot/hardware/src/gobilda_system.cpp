@@ -206,26 +206,30 @@ hardware_interface::return_type gobilda_robot::GobildaSystemHardware::write(
 
   // Map wheel angular velocity (rad/s) to PWM µs
   auto map_vel_to_us = [&](double u_rad_s) -> int {
+    // Handle deadband - zero output within deadband
     if (std::fabs(u_rad_s) < cmd_deadband_rad_s)
-      return static_cast<int>(std::llround(neutral_us));
+        return static_cast<int>(std::llround(neutral_us));
 
     const bool fwd = (u_rad_s > 0.0);
-    double mag  = std::fabs(u_rad_s) - cmd_deadband_rad_s;
-    double base = fwd ? deadband_fwd_us      : deadband_rev_us;
+    
+    // Remove deadband and scale the remaining velocity
+    double mag = std::fabs(u_rad_s) - cmd_deadband_rad_s;
+    
+    // Use your configured base and gain values (don't override!)
+    double base = fwd ? deadband_fwd_us : deadband_rev_us;
     double gain = fwd ? gain_fwd_us_per_rads : gain_rev_us_per_rads;
 
-    base = 1500.0;
-    gain = u_rad_s / 32.7;
-    mag = 450.0;
-
+    // Calculate pulse width using actual velocity magnitude
     double pulse = neutral_us + std::copysign(base + gain * mag, u_rad_s);
 
-    // Directional caps to enforce your chosen “full” values
-    if (fwd) pulse = std::min(pulse, top_fwd_us);
-    else     pulse = std::max(pulse, top_rev_us);
+    // Directional caps to enforce your chosen "full" values'
+    // Hardware guard-rails
+    if (fwd) {
+        pulse = std::min(pulse, top_fwd_us);
+    } else {
+        pulse = std::max(pulse, top_rev_us);
+    }
 
-    // Hardware guardrails
-    pulse = std::clamp(pulse, min_us, max_us);
     return static_cast<int>(std::llround(pulse));
   };
 

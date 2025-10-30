@@ -59,16 +59,16 @@ private:
   // They most likely will need to be tuned for every robot/
   // motor controller. NOTE that I used thr 312 rpm motors
   // for these values.
-  const double neutral_us           = 1480.0;
+  const double neutral_us           = 1500.0;
   const double deadband_fwd_us      = 40.0;
   const double deadband_rev_us      = 40.0;
   const double gain_fwd_us_per_rads = 27.0;
   const double gain_rev_us_per_rads = 20.0;
   const double cmd_deadband_rad_s   = 0.05;
-  const double top_fwd_us           = 1950.0;  // cap forward
-  const double top_rev_us           = 1050.0;  // cap reverse
-  const double min_us               = 1000.0;
-  const double max_us               = 2000.0;
+  
+  // Hard-cap on how fast the robot can actually move
+  const double top_fwd_us           = 1800.0;
+  const double top_rev_us           = 1200.0;
 };
 
 }  // namespace gobilda_robot
