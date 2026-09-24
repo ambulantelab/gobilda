@@ -36,17 +36,6 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
-            'ekf_params_file',
-            default_value=PathJoinSubstitution([
-                    FindPackageShare('gobilda_robot'),
-                    'config',
-                    'ekf.yaml',
-                ])
-        )
-    )
-
-    declared_arguments.append(
-        DeclareLaunchArgument(
             'oakd_params_file',
             default_value=PathJoinSubstitution([
                     FindPackageShare('gobilda_robot'),
@@ -70,8 +59,6 @@ def generate_launch_description():
     laser_frame_id = LaunchConfiguration('frame_id')
     
     oakd_params_file = LaunchConfiguration('oakd_params_file')
-    ekf_params_file = LaunchConfiguration('ekf_params_file')
-
     rectify_rgb = LaunchConfiguration('rectify_rgb')
 
     # Grab the RPLidar launch file
@@ -88,37 +75,6 @@ def generate_launch_description():
                 'frame_id': laser_frame_id,
                 'serial_port': '/dev/rplidar',
                 'serial_baudrate': '115200',
-            }.items(),
-    )
-
-    # Add the KISS-ICP Node for LiDAR based odometry
-    # Before KISS-ICP node we need to convert from Laser --> PointCloud message
-    laser_to_pointcloud = Node(
-        package='pointcloud_to_laserscan',
-        executable='laserscan_to_pointcloud_node',
-        remappings=[
-            ('scan_in', 'scan'),
-            # Did not like it when I remapped the 'cloud' topic
-        ],
-    )
-    
-    kiss_icp = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([
-                PathJoinSubstitution([
-                    FindPackageShare('kiss_icp'),
-                    'launch',
-                    'odometry.launch.py',
-                ])
-            ]),
-
-           launch_arguments={
-                'topic': '/cloud',
-                'visualize': 'false',
-                'base_frame': 'base_link',
-                'lidar_odom_frame': 'odom',
-                'invert_odom_tf': 'False',
-                'orientation_covariance': '0.3',
-                'publish_odom_tf': 'False',
             }.items(),
     )
 
@@ -140,36 +96,6 @@ def generate_launch_description():
                 'imu_from_descr': 'false',
                 'params_file': oakd_params_file,
             }.items()
-    )
-
-    rtabmap_odom = Node(
-        package='rtabmap_odom',
-        executable='rgbd_odometry',
-        name='rgbd_odometry',
-        output='screen',
-        parameters=[
-            # Synchronization parameters
-            {'approx_sync': True},
-            {'publish_tf': False},
-
-            # RANSAC params
-            {'Vis/MinInliers': '15'},
-            {'publish_tf': False},
-        ],
-        remappings=[
-            ("rgb/image", "oakd/rgb/image_rect"),
-            ("rgb/camera_info", "oakd/rgb/camera_info"),
-            ("depth/image", "oakd/stereo/image_raw"),
-            ('odom', 'rtabmap/odom'),
-        ],
-    )
-
-    robot_localization = Node(
-            package='robot_localization',
-            executable='ekf_node',
-            name='ekf_odom',
-            output='screen',
-            parameters=[ekf_params_file],
     )
 
     # Get URDF via xacro
@@ -203,6 +129,7 @@ def generate_launch_description():
         remappings=[
             ('~/robot_description', '/robot_description'),
             ('/gobilda_base_controller/cmd_vel', '/gobilda/cmd_vel'),
+            ('/gobilda_base_controller/cmd_vel', '/gobilda/odom'),
         ],
         # uncomment for debugging
         # arguments=[ '--ros-args', '--log-level', 'debug', ],
@@ -235,15 +162,11 @@ def generate_launch_description():
         robot_state_pub_node,
         joint_state_broadcaster_spawner,
         robot_controller_spawner,
-        laser_to_pointcloud,
-        rtabmap_odom,
-        robot_localization,
     ]
 
     launch_files = [
         rplidar,
         oakd_camera,
-        kiss_icp,
     ]
     
     # Ordering here has some effects on the startup timing of the nodes
