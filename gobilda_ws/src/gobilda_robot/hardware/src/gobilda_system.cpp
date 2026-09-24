@@ -414,8 +414,8 @@ hardware_interface::return_type gobilda_robot::GobildaSystemHardware::write(
   
   // writing the target speeds along with other struct memebers to target speed packet
   target_speed_packet_t tsp = {};
-  tsp.target_left_rads = (float) hw_commands_[left_wheel_idx_] * -1.0;
-  tsp.target_right_rads = (float) hw_commands_[right_wheel_idx_];
+  tsp.target_left_rads = (float) hw_commands_[left_wheel_idx_] * 1.0;
+  tsp.target_right_rads = (float) hw_commands_[right_wheel_idx_] * -1.0;
   tsp.seq = seq++;
   tsp.checksum = 0;
   uint16_t checksum = calculate_checksum(&tsp, sizeof(target_speed_packet_t));
