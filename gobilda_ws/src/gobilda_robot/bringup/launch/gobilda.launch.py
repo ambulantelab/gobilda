@@ -53,7 +53,16 @@ def generate_launch_description():
         )
     )
 
-
+    # Grab the FoxGlove launch file
+    foxglove = IncludeLaunchDescription(
+            XMLLaunchDescriptionSource([
+                PathJoinSubstitution([
+                    FindPackageShare('foxglove_bridge'),
+                    'launch',
+                    'foxglove_bridge_launch.xml',
+                ])
+            ]),
+    )
     # Initialize Arguments
     use_mock_hardware = LaunchConfiguration('use_mock_hardware')
     laser_frame_id = LaunchConfiguration('frame_id')
@@ -170,4 +179,4 @@ def generate_launch_description():
     ]
     
     # Ordering here has some effects on the startup timing of the nodes
-    return LaunchDescription(declared_arguments + launch_files + nodes)
+    return LaunchDescription(declared_arguments + launch_files + nodes + [foxglove])
